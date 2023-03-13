@@ -1,0 +1,44 @@
+@import 'Colors.css';
+
+.top-info-bar {
+  background-color: var(--primary);
+  border-radius: 15px;
+  padding: 15px 25px;
+}
+
+.rounded-container {
+  border-radius: 15px;
+  padding: 15px 25px;
+}
+
+
+/* Landing page */
+.pokemon-main-sprite {
+  width: 300px;
+}
+
+/* Search Box */
+.input-box i {
+  position: absolute;
+  right: 13px;
+  top:15px;
+  color:#ced4da;
+
+}
+
+.search-bar{
+  background-color: var(--dark-grey);
+  border: none;
+  border-radius: 20px;
+  height: 35px;
+  width: 100%;
+  padding: 2px 23px 2px 30px;
+  outline: 0;
+  color: var(--text-white);
+}
+
+.search-bar:focus{
+  background-color: var(--dark-grey);
+  box-shadow: none;
+  border: none;
+}

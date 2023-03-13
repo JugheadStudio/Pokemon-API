@@ -1,24 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
+
+// Font
+import "@fontsource/montserrat/100.css";
+import "@fontsource/montserrat/400.css";
+import "@fontsource/montserrat/700.css";
+
+// Pages
+import Landing from './pages/Landing';
+import Compare from './pages/Compare';
+import Timeline from './pages/Timeline';
+import Sidebar from './components/sidebar';
+
+// Bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Container } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Row>
+
+        <Sidebar className='align-items-center' xs={2}/>
+
+        <Routes>
+          <Route path='/' element= { <Landing /> } />
+          <Route path='/compare' element= { <Compare /> } />
+          <Route path='/timeline' element= { <Timeline /> } />
+        </Routes>
+
+      </Row>
+    </Container>
   );
 }
 

@@ -1,0 +1,12 @@
+:root {
+    --dark-grey:#1f2025;
+    --bg-grey:#26292e;
+    --mid-grey:#2f333e;
+    --nav-hover:#242730;
+    --text-white:#d4d8e3;
+    --primary: #4192fe;
+}
+
+.gb-dark-grey {
+    background-color: var(--dark-grey);
+}

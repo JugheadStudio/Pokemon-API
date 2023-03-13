@@ -1,0 +1,47 @@
+@import 'Colors.css';
+
+#sidebar {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    min-height: 100vh !important;
+    z-index: 100;
+    color: var(--text-white);
+    text-align: center;
+  }
+
+  .sidebar-container {
+    background-color: var(--dark-grey);
+    border-radius: 15px;
+    position: relative;
+  }
+  
+  #mainLogo {
+    width: 100px;
+  }
+
+  .navItem {
+    font-size: small;
+    font-weight: 100;
+    display: block;
+    padding: 10px 0;
+    text-decoration: none;
+    color: var(--text-white);
+}
+
+#sidebar a.active {
+    background-color: var(--mid-grey);
+}
+
+#sidebar a:hover {
+    color: var(--text-white);
+    background-color: var(--nav-hover);
+}
+
+.navDisclaimer {
+    font-size: x-small;
+    font-weight: 100;
+    bottom: 25px;
+    padding: 0 15px;
+    position: absolute;
+}
