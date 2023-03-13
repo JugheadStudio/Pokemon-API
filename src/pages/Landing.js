@@ -6,7 +6,26 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
+// Chart JS =====================
+import {
+  Chart as ChartJS,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+} from 'chart.js';
+import { Radar } from 'react-chartjs-2';
+
+ChartJS.register(
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+);
+
 function Landing() {
+
+  // PokeAPI variables =====================
 
   const [apiData, setApiData] =useState([]);
   const [pokemonSprite, setPokemonSprite] = useState("")
@@ -15,6 +34,15 @@ function Landing() {
   const [pokemonSpecies, setPokemonSpecies] = useState("")
   const [pokemonHeight, setPokemonHeight] = useState("")
   const [pokemonWeight, setPokemonWeight] = useState("")
+  const [pokemonHpStat, setpokemonHpStat] = useState("")
+  const [pokemonAtkStat, setpokemonAtkStat] = useState("")
+  const [pokemonDefStat, setpokemonDefStat] = useState("")
+  const [pokemonSpAtkStat, setpokemonSpAtkStat] = useState("")
+  const [pokemonSpDefStat, setpokemonSpDefStat] = useState("")
+  const [pokemonSpdStat, setpokemonSpdStat] = useState("")
+  const [pokemonURL, setPokemonURl] = useState("")
+
+  // Get Pokemon data from API =====================
 
   useEffect(() => {
       axios.get('https://pokeapi.co/api/v2/pokemon/rayquaza')
@@ -25,28 +53,49 @@ function Landing() {
         setPokemonName(res.data.species.name)
         setDexNumber(res.data.id)
         setPokemonHeight(res.data.height)
-        setPokemonWeight(res.data.weight)
+        setpokemonHpStat(res.data.stats[0].base_stat)
+        setpokemonAtkStat(res.data.stats[1].base_stat)
+        setpokemonDefStat(res.data.stats[2].base_stat)
+        setpokemonSpAtkStat(res.data.stats[3].base_stat)
+        setpokemonSpDefStat(res.data.stats[4].base_stat)
+        setpokemonSpdStat(res.data.stats[5].base_stat)
+        setPokemonURl(res.data.species.url)
+      })
+      .catch((err) => {
+          console.log(err);
+      })
+    }, [])
+
+    // Get species from the API =====================
+
+    useEffect(() => {
+      axios.get('https://pokeapi.co/api/v2/pokemon-species/384/')
+      .then((res) => {
+        // console.log(res.data)
+        setPokemonSpecies(res.data.genera[7].genus)
       })
       .catch((err) => {
           console.log(err);
       })
   }, [])
 
-  useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/pokemon-species/384/')
-    .then((res) => {
-      // console.log(res.data)
-
-      setPokemonSpecies(res.data.genera[7].genus)
-    })
-    .catch((err) => {
-        console.log(err);
-    })
-}, [])
+  const radialData = {
+    labels: ['HP', 'Attack', 'Defence', 'Speed', 'Sp. Def', 'Sp. Atk'],
+    datasets: [
+      {
+        label: '# of Votes',
+        data: [pokemonHpStat, pokemonAtkStat, pokemonDefStat, pokemonSpAtkStat, pokemonSpDefStat, pokemonSpdStat],
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1,
+      },
+    ],
+  };
 
   return (
 
     <Col xs={10}>
+      {/* API info ===================== */}
       <Row className='mb-25'>
       <Col xs={12} className='pt-12'>
           <div className='top-info-bar'>
@@ -73,7 +122,8 @@ function Landing() {
         </Col>
       </Row>
 
-      <Row>
+      {/* Pokemon info ===================== */}
+      <Row className="mb-25">
         <Col xs={8}>
           <div className='rounded-container gb-dark-grey'>
             <Row className="align-items-center">
@@ -93,10 +143,22 @@ function Landing() {
           </div>
         </Col>
 
+{       /* Radar Chart ===================== */}
         <Col xs={4}>
           <div className='rounded-container gb-dark-grey'>
-            <h1>content here</h1>
+            <Radar data={radialData} />
           </div>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col xs={8}>
+          <div className='rounded-container gb-dark-grey'>
+            <Radar data={radialData} />
+          </div>
+        </Col>
+
+        <Col xs={8}>
         </Col>
       </Row>
 
