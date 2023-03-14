@@ -42,3 +42,21 @@
   box-shadow: none;
   border: none;
 }
+
+/* Weakness Table */
+
+table tr td {
+  text-align: center;
+  color: var(--text-white);
+}
+
+tr, td, th {
+  border: 1px solid var(--mid-grey) !important;
+  font-weight: 100;
+  font-size: 10px;
+}
+
+td {
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
