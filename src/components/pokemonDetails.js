@@ -51,7 +51,7 @@ function PokemonDetails() {
   }, [])
   
     return (
-      <div className='rounded-container gb-dark-grey'>
+      <div className='rounded-container bg-dark-grey'>
         <Row className="align-items-center">
           <Col xs={6}>
             <img src={pokemonSprite} className="pokemon-main-sprite" alt="" />

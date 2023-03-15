@@ -7,6 +7,10 @@
     --primary: #4192fe;
 }
 
-.gb-dark-grey {
+.bg-dark-grey {
     background-color: var(--dark-grey);
+}
+
+.bg-mid-grey {
+    background-color: var(--mid-grey);
 }

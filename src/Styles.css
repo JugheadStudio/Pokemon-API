@@ -9,8 +9,8 @@
 .rounded-container {
   border-radius: 15px;
   padding: 15px 25px;
+  width: 100%;
 }
-
 
 /* Landing page */
 .pokemon-main-sprite {
@@ -52,7 +52,6 @@ table tr td {
 
 tr, td, th {
   border: 1px solid var(--mid-grey) !important;
-  font-weight: 100;
   font-size: 10px;
 }
 

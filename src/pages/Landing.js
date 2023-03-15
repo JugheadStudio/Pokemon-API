@@ -5,6 +5,7 @@ import axios from "axios";
 import WeaknessTable from '../components/weaknessTable';
 import RadarStats from '../components/radarStats';
 import PokemonDetails from '../components/pokemonDetails';
+import PokemonBarStats from '../components/pokemonBarStats';
 
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -30,7 +31,7 @@ function Landing() {
       <Row className='mb-12'>
         <Col xs={12}>
           <div>
-            <h2 className="bold">Pokedex Data</h2>
+            <h2 className="bold">Pokemon Data</h2>
           </div>
         </Col>
       </Row>
@@ -44,22 +45,21 @@ function Landing() {
       </Row>
 
       <Row className="mb-25">
-        <Col xs={8}>
+        <Col xs={8} className='d-flex'>
           <PokemonDetails/>
         </Col>
 
-        <Col xs={4}>
+        <Col xs={4} className='d-flex'>
           <RadarStats/>
         </Col>
       </Row>
 
-      <Row>
-        <Col xs={6}>
-          <div className='rounded-container gb-dark-grey'>
-          </div>
+      <Row className="pb-12">
+        <Col xs={6} className='d-flex'>
+          <PokemonBarStats/>
         </Col>
 
-        <Col xs={6}>
+        <Col xs={6} className='d-flex'>
           <WeaknessTable/>
         </Col>
       </Row>

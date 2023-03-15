@@ -52,22 +52,54 @@ function RadarStats() {
       })
     }, [])
 
-  const radialData = {
-    labels: ['HP', 'Attack', 'Defence', 'Speed', 'Sp. Def', 'Sp. Atk'],
-    datasets: [
-      {
-        label: '# of Votes',
-        data: [pokemonHpStat, pokemonAtkStat, pokemonDefStat, pokemonSpdStat, pokemonSpDefStat, pokemonSpAtkStat],
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255, 99, 132, 1)',
-        borderWidth: 1,
+    const radialData = {
+      labels: ['HP', 'Attack', 'Defence', 'Speed', 'Sp. Def', 'Sp. Atk'],
+      datasets: [
+        {
+          data: [pokemonHpStat, pokemonAtkStat, pokemonDefStat, pokemonSpdStat, pokemonSpDefStat, pokemonSpAtkStat],
+          backgroundColor: 'rgba(54, 162, 235, 0.7)',
+          borderColor: 'rgba(255, 99, 132, 0)',
+        },
+      ],
+    };
+
+    const config = {
+      type: 'radar',
+      data: {},
+      options: {
+        
       },
-    ],
-  };
+      plugins: []
+    }
   
     return (
-      <div className='rounded-container gb-dark-grey'>
-        <Radar data={radialData} />
+      <div className='rounded-container bg-mid-grey'>
+        <h3 className='bold mb-15 text-center'>Stats Chart</h3>
+        <Radar 
+        options={{
+          elements: {
+            point: {
+              radius: 0,
+            }
+          },
+          scales: {
+            r: {
+              min: 0,
+              angleLines: {
+                color: 'transparent'
+              },
+              grid: {
+                color: '#1f2025'
+              },
+              pointLabels: {
+                color: '#d4d8e3'
+              },
+              ticks: {
+                display: false
+              }
+            }
+          }
+        }} data={radialData} />
       </div>
     )
   }
