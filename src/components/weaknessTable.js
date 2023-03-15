@@ -22,6 +22,7 @@ function WeaknessTable() {
   return (
     <div className='rounded-container bg-dark-grey'>
       <h3 className='bold mb-15 text-center'>Weakness Table</h3>
+      <p className='mb-15 text-center'>The numbers displayed are the damage multiplier for the each type.</p>
       <Table bordered>
         <tbody>
           <tr>

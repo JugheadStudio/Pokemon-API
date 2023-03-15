@@ -1,11 +1,8 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-
 // Components
-import WeaknessTable from '../components/weaknessTable';
-import RadarStats from '../components/radarStats';
 import PokemonDetails from '../components/pokemonDetails';
-import PokemonBarStats from '../components/pokemonBarStats';
+import RadarStats from '../components/radarStats';
+import HorizontalBarStats from '../components/horizontalBarStats';
+import WeaknessTable from '../components/weaknessTable';
 
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -36,10 +33,10 @@ function Landing() {
         </Col>
       </Row>
 
-      <Row className='mb-12'>
+      <Row className='mb-25'>
         <Col xs={12}>
-          <div class="input-box">
-            <input type="text" class="search-bar" placeholder="Type Pokemon name"/>                  
+          <div className="input-box">
+            <input type="text" className="search-bar" placeholder="Type Pokemon name"/>                  
           </div>
         </Col>
       </Row>
@@ -50,13 +47,19 @@ function Landing() {
         </Col>
 
         <Col xs={4} className='d-flex'>
-          <RadarStats/>
+          <div className='rounded-container bg-mid-grey'>
+            <h3 className='bold mb-15 text-center'>Stats Chart</h3>
+            <RadarStats/>
+          </div>
         </Col>
       </Row>
 
       <Row className="pb-12">
         <Col xs={6} className='d-flex'>
-          <PokemonBarStats/>
+          <div className='rounded-container bg-dark-grey'>
+            <h3 className='bold mb-15 text-center'>Pokemon Stats</h3>
+            <HorizontalBarStats/>
+          </div>
         </Col>
 
         <Col xs={6} className='d-flex'>

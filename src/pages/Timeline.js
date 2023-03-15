@@ -11,7 +11,7 @@ function Timeline() {
       <Row>
       <Col xs={12} className='pt-12'>
           <div className='top-info-bar'>
-            <h3 className="bold">Timeline</h3>
+            <h1 className="bold">Timeline</h1>
           </div>
         </Col>
       </Row>

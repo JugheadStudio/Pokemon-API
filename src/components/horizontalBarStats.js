@@ -11,7 +11,7 @@ ChartJS.register(
 	LineElement
 );
 
-const PokemonBarChart = () => {
+const HorizontalBarStats = () => {
 
 	const [PokemonData, setPokemonData] = useState();
 
@@ -78,39 +78,36 @@ const PokemonBarChart = () => {
 
 	return (
 
-		<div className='rounded-container bg-dark-grey'>
-			<h3 className='bold mb-15 text-center'>Pokemon Stats</h3>
-			<Bar data={data} options= {{
-				indexAxis: 'y',
-				scales: {
-					y: {
-						beginAtZero: true,
-						ticks: {
-							color: '#d4d8e3',
-						},
-						grid: {
-							color: 'transparent'
-						}
+		<Bar data={data} options= {{
+			indexAxis: 'y',
+			scales: {
+				y: {
+					beginAtZero: true,
+					ticks: {
+						color: '#d4d8e3',
 					},
-					x: {
-						ticks: {
-							color: '#d4d8e3',
-						},
-						grid: {
-							color: 'transparent'
-						}
+					grid: {
+						color: 'transparent'
 					}
 				},
-				elements: {
-					bar: {
-						borderRadius: 25,
-						borderSkipped: false
+				x: {
+					ticks: {
+						color: '#d4d8e3',
+					},
+					grid: {
+						color: 'transparent'
 					}
 				}
-			}} />
-		</div>
+			},
+			elements: {
+				bar: {
+					borderRadius: 25,
+					borderSkipped: false
+				}
+			}
+		}} />
 
 	);
 };
 
-export default PokemonBarChart;
+export default HorizontalBarStats;

@@ -14,7 +14,8 @@
 
 /* Landing page */
 .pokemon-main-sprite {
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
 }
 
 /* Search Box */

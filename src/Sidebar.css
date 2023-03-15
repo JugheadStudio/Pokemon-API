@@ -30,7 +30,7 @@
 }
 
 #sidebar a.active {
-    background-color: var(--mid-grey);
+    background-color: var(--primary);
 }
 
 #sidebar a:hover {
@@ -39,9 +39,19 @@
 }
 
 .navDisclaimer {
-    font-size: x-small;
+    font-size: 0.6rem;
     font-weight: 100;
     bottom: 25px;
     padding: 0 15px;
     position: absolute;
+}
+
+.navDisclaimer a {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.navDisclaimer span {
+  font-weight: 700;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 
 // Images
-import logo from '../images/ballLogo.png';
+import logo from '../logo.svg';
 
 // Bootstrap
 import Col from 'react-bootstrap/Col';
@@ -11,19 +11,21 @@ function Sidebar() {
     return (
       <Col id="sidebar">
         <div className='pt-12 pb-12 h-100'>
-          <div className='pt-50 h-100 sidebar-container'>
+          <div className='h-100 sidebar-container'>
 
-            <img id='mainLogo' src={logo} alt='pokeball log'/>
-            <h1 className='mb-50'>PokeAPI</h1>
+            <img id='mainLogo' src={logo} alt='Datamon Logo' className='mt-50 mb-50'/>
 
             <NavLink to="/" className='navItem'>Home</NavLink>
             <NavLink to="/compare" className='navItem'>Compare</NavLink>
             <NavLink to="/timeline" className='navItem'>Timeline</NavLink>
 
             <div className='navDisclaimer'>
-              <p>Created by Ruan Jordaan Using PokeAPI V2 
-              <br /><br />
-              All content is property of Pokemon 1995-2023 Nintendo/Game Freak</p>
+              <p>
+                All content is property of &copy;Pokemon 1995-2023 Nintendo/Game Freak 
+                <br /><br />
+                Designed by <span>Jughead Studio</span><br />
+                Using <a href="https://pokeapi.co/">PokeAPI V2</a>
+              </p>
 
             </div>
           </div>

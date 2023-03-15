@@ -6,7 +6,7 @@ import axios from "axios";
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-function PokemonDetails() {
+function PokemonDetailsStacked() {
 
   // PokeAPI variables =====================
 
@@ -60,13 +60,12 @@ function PokemonDetails() {
     return (
       <div className='rounded-container bg-dark-grey'>
         <Row className="align-items-center">
-          <Col xs={6}>
+          <Col xs={12} className='text-center'>
             <img src={pokemonSprite} className="pokemon-main-sprite" alt="" />
           </Col>
 
-          <Col xs={6}>
+          <Col xs={12} className='pb-25 text-center'>
             <h1 className="capitalize mb-20 bold">{pokemonName}</h1>
-            <hr/>
             <p className="mb-10 mt-20"><strong>Dex Number:</strong> {dexNumber}</p>
             <p className="mb-10 capitalize"><strong>Type:</strong> {pokemonType}</p>
             <p className="capitalize mb-10"><strong>Species:</strong> {pokemonSpecies}</p>
@@ -78,4 +77,4 @@ function PokemonDetails() {
     )
   }
   
-  export default PokemonDetails;
+  export default PokemonDetailsStacked;
