@@ -1,10 +1,19 @@
 :root {
-    --dark-grey:#1f2025;
-    --bg-grey:#26292e;
-    --mid-grey:#2f333e;
-    --nav-hover:#242730;
-    --text-white:#d4d8e3;
     --primary: #4192fe;
+
+    --bg-grey:#26292e;
+
+    --dark-grey:#1f2025;
+    --mid-grey:#2f333e;
+
+    --nav-hover:#242730;
+
+    --text-white:#d4d8e3;
+
+    --chart1: #D6FF29;
+    --chart2: #4192fe;
+    --chart3: #73c0ff;
+    --chart4: #b1f3ff;
 }
 
 .bg-dark-grey {

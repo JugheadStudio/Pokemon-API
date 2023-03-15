@@ -2,11 +2,15 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+// Bootstrap
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
 // Chart JS =====================
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, ArcElement } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement);
 
 function PieStats() {
 
@@ -24,6 +28,8 @@ function PieStats() {
 
   const [randomPokemonStats3, setrandomPokemonStats3] = useState("")
   const [randomPokemonName3, setrandomPokemonName3] = useState("")
+
+  const cssColorVar = getComputedStyle(document.body)
 
 
   // Get Pokemon data from API =====================
@@ -112,22 +118,16 @@ function PieStats() {
   }, [])
 
   const pieData = {
-    labels: [
-      userPokemonName.charAt(0).toUpperCase() + userPokemonName.slice(1),
-      randomPokemonName1.charAt(0).toUpperCase() + randomPokemonName1.slice(1),
-      randomPokemonName2.charAt(0).toUpperCase() + randomPokemonName2.slice(1),
-      randomPokemonName3.charAt(0).toUpperCase() + randomPokemonName3.slice(1)
-    ],
     datasets: [
       {
         data: [userPokemonStats, randomPokemonStats1, randomPokemonStats2, randomPokemonStats3],
         backgroundColor: [
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 255, 255, 0.75)',
-          'rgba(255, 255, 255, 0.5)',
-          'rgba(255, 255, 255, 0.25)'
+          cssColorVar.getPropertyValue('--chart1'),
+          cssColorVar.getPropertyValue('--chart2'),
+          cssColorVar.getPropertyValue('--chart3'),
+          cssColorVar.getPropertyValue('--chart4')
         ],
-        borderColor: 'rgba(255, 99, 132, 0)',
+        borderColor: cssColorVar.getPropertyValue('--dark-grey'),
       },
     ],
   };
@@ -142,7 +142,30 @@ function PieStats() {
   }
 
   return (
-    <Doughnut options={config} data={pieData} />
+
+    <div className='rounded-container bg-dark-grey'>
+      <h3 className='bold mb-15 text-center'>Stats Comparison</h3>
+      <p id='pieChartName' className='text-center'>Below you will find the base stats of <span className='capitalize'>{userPokemonName}</span> compared to <span className='capitalize'>{randomPokemonName1}</span>, <span className='capitalize'>{randomPokemonName2}</span> and <span className='capitalize'>{randomPokemonName3}</span> which were randomly selected.</p>
+      <div className='rounded-container'>
+      <Row className="align-items-center">
+        <Col xs={8}>
+          <div className='w-100'>
+            <div className='w-75'>
+              <Doughnut options={config} data={pieData} />
+            </div>
+          </div>
+        </Col>
+
+        <Col xs={4}>
+          <p className="mb-10 capitalize item-legend">{userPokemonName}</p>
+          <p className="mb-10 capitalize item-legend">{randomPokemonName1}</p>
+          <p className="mb-10 capitalize item-legend">{randomPokemonName2}</p>
+          <p className="mb-10 capitalize item-legend">{randomPokemonName3}</p>
+        </Col>
+      </Row>
+    </div>
+    </div>
+
   )
 }
   

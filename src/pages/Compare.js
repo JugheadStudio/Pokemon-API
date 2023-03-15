@@ -98,26 +98,12 @@ function Compare() {
       </Row>
 
       <Row>
-        <Col xs={6} className='pb-12 text-center'>
-          <div className='rounded-container bg-dark-grey'>
-            <h3 className='bold mb-15'>Stats Overview</h3>
-            <div className='w-100 text-center mb-25'>
-              <div className='w-75 m-auto'>
-                <PieStats/>
-              </div>
-            </div>
-          </div>
+        <Col xs={6} className='pb-12'>
+          <PieStats/>
         </Col>
 
-        <Col xs={6} className='pb-12 text-center'>
-          <div className='rounded-container bg-dark-grey'>
-            <h3 className='bold mb-15'>Stats Overview</h3>
-            <div className='w-100 text-center mb-25'>
-              <div className='w-75 m-auto'>
-                <PieStats/>
-              </div>
-            </div>
-          </div>
+        <Col xs={6} className='pb-12'>
+          <PieStats/>
         </Col>
       </Row>
 

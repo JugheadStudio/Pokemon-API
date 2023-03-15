@@ -60,3 +60,49 @@ td {
   padding-top: 15px !important;
   padding-bottom: 15px !important;
 }
+
+/* Pie Chart */
+#pieChartName span:nth-of-type(1) {
+  color: var(--chart1);
+  font-weight: 700;
+}
+
+#pieChartName span:nth-of-type(2) {
+  color: var(--chart2);
+  font-weight: 700;
+}
+
+#pieChartName span:nth-of-type(3) {
+  color: var(--chart3);
+  font-weight: 700;
+}
+
+#pieChartName span:nth-of-type(4) {
+  color: var(--chart4);
+  font-weight: 700;
+}
+
+.item-legend:before {
+  content:"\A";
+  margin-right: 15px;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  display:inline-block;
+}
+
+.item-legend:nth-of-type(1)::before {
+  background: var(--chart1);
+}
+
+.item-legend:nth-of-type(2)::before {
+  background: var(--chart2);
+}
+
+.item-legend:nth-of-type(3)::before {
+  background: var(--chart3);
+}
+
+.item-legend:nth-of-type(4)::before {
+  background: var(--chart4);
+}
