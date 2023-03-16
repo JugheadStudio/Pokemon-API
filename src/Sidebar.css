@@ -55,3 +55,9 @@
 .navDisclaimer span {
   font-weight: 700;
 }
+
+.vh-calc {
+  height: calc(100vh - 25px);
+  position: sticky;
+  top: 0;
+}

@@ -14,23 +14,22 @@ ChartJS.register(ArcElement);
 
 function PieStats() {
 
+  const cssColorVar = getComputedStyle(document.body);
+
   // PokeAPI variables =====================
   // Pokemon user searched for
-  const [userPokemonStats, setuserPokemonStats] = useState("")
-  const [userPokemonName, setuserPokemonName] = useState("")
+  const [userPokemonStats, setuserPokemonStats] = useState("");
+  const [userPokemonName, setuserPokemonName] = useState("");
 
   // Random pokemon
-  const [randomPokemonStats1, setrandomPokemonStats1] = useState("")
-  const [randomPokemonName1, setrandomPokemonName1] = useState("")
+  const [randomPokemonStats1, setrandomPokemonStats1] = useState("");
+  const [randomPokemonName1, setrandomPokemonName1] = useState("");
 
-  const [randomPokemonStats2, setrandomPokemonStats2] = useState("")
-  const [randomPokemonName2, setrandomPokemonName2] = useState("")
+  const [randomPokemonStats2, setrandomPokemonStats2] = useState("");
+  const [randomPokemonName2, setrandomPokemonName2] = useState("");
 
-  const [randomPokemonStats3, setrandomPokemonStats3] = useState("")
-  const [randomPokemonName3, setrandomPokemonName3] = useState("")
-
-  const cssColorVar = getComputedStyle(document.body)
-
+  const [randomPokemonStats3, setrandomPokemonStats3] = useState("");
+  const [randomPokemonName3, setrandomPokemonName3] = useState("");
 
   // Get Pokemon data from API =====================
 

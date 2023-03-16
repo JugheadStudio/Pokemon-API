@@ -10,8 +10,8 @@ import Col from 'react-bootstrap/Col';
 function Sidebar() {
     return (
       <Col id="sidebar">
-        <div className='pt-12 pb-12 h-100'>
-          <div className='h-100 sidebar-container'>
+        <div className='pt-12 pb-12 vh-calc'>
+          <div className='vh-calc sidebar-container'>
 
             <img id='mainLogo' src={logo} alt='Datamon Logo' className='mt-50 mb-50'/>
 

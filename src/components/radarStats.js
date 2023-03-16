@@ -62,15 +62,6 @@ function RadarStats() {
         },
       ],
     };
-
-    const config = {
-      type: 'radar',
-      data: {},
-      options: {
-        
-      },
-      plugins: []
-    }
   
     return (
       <Radar 

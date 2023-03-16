@@ -12,13 +12,19 @@
   width: 100%;
 }
 
-/* Landing page */
 .pokemon-main-sprite {
   width: 100%;
   max-width: 300px;
 }
 
-/* Search Box */
+.line-chart-wrapper {
+  min-height: 300px;
+  max-height: 500px;
+  min-width: 100%;
+}
+
+/* Search Box ================== */
+
 .input-box i {
   position: absolute;
   right: 13px;
@@ -44,7 +50,9 @@
   border: none;
 }
 
-/* Weakness Table */
+/*================================== */
+
+/* Weakness Table ================== */
 
 table tr td {
   text-align: center;
@@ -61,7 +69,10 @@ td {
   padding-bottom: 15px !important;
 }
 
-/* Pie Chart */
+/*================================== */
+
+/* Pie Chart ======================= */
+
 #pieChartName span:nth-of-type(1) {
   color: var(--chart1);
   font-weight: 700;
@@ -106,3 +117,5 @@ td {
 .item-legend:nth-of-type(4)::before {
   background: var(--chart4);
 }
+
+/* ================================= */
