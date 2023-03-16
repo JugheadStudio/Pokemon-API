@@ -4,12 +4,14 @@
   background-color: var(--primary);
   border-radius: 15px;
   padding: 15px 25px;
+  margin-bottom: 25px;
 }
 
 .rounded-container {
   border-radius: 15px;
   padding: 15px 25px;
   width: 100%;
+  margin-bottom: 25px;
 }
 
 .pokemon-main-sprite {
@@ -17,21 +19,18 @@
   max-width: 300px;
 }
 
-.line-chart-wrapper {
-  min-height: 300px;
-  max-height: 500px;
+.chart-wrapper {
+  min-height: 150px;
+  max-height: 200px;
   min-width: 100%;
 }
 
-/* Search Box ================== */
-
-.input-box i {
-  position: absolute;
-  right: 13px;
-  top:15px;
-  color:#ced4da;
-
+.line-chart-wrapper {
+  min-height: 300px;
+  max-height: 500px;
 }
+
+/* Search Box ================== */
 
 .search-bar{
   background-color: var(--dark-grey);
@@ -42,6 +41,7 @@
   padding: 2px 23px 2px 30px;
   outline: 0;
   color: var(--text-white);
+  margin-bottom: 25px;
 }
 
 .search-bar:focus{
@@ -119,3 +119,7 @@ td {
 }
 
 /* ================================= */
+
+.radar-size {
+  width: 100%;
+}

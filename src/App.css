@@ -46,6 +46,10 @@ h3 {
   padding-top: 25px !important;
 }
 
+.plr-25 {
+  padding: 0 25px;
+}
+
 .pb-12 {
   padding-bottom: 12px !important;
 }
@@ -78,6 +82,10 @@ h3 {
   margin-top: 20px !important;
 }
 
+.mt-25 {
+  margin-top: 25px !important;
+}
+
 .mt-50 {
   margin-top: 50px !important;
 }
@@ -94,10 +102,176 @@ h3 {
   margin-bottom: 50px !important;
 }
 
+.mb-12-reset {
+  margin-bottom: 12px !important;
+}
+
 .h-100 {
   height: 100%;
 }
 
 .capitalize {
   text-transform: capitalize !important;
+}
+
+.sm-m-auto {
+  margin: 0;
+}
+
+.responsive-width {
+  width: 100%;
+}
+
+@media only screen and (max-width: 576px) {
+  .xs-text-center {
+    text-align: center;
+  }
+
+  .rounded-container {
+    margin-bottom: 12px;
+  }
+
+  .top-info-bar {
+    margin-bottom: 12px;
+  }
+
+  .search-bar {
+    margin-bottom: 12px;
+  }
+
+  .chart-wrapper {
+    min-height: 100px;
+    max-height: 200px;
+  }
+
+  .radar-size {
+    width: 75%;
+  }
+
+  .sm-m-auto {
+    margin: 0;
+  }
+
+  .responsive-width {
+    width: 50%;
+  }
+
+  td {
+    padding: 5px 0 !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .radar-size {
+    width: auto;
+  }
+
+  .sm-m-auto {
+    margin: 0;
+  }
+
+  .responsive-width {
+    width: 75%;
+  }
+
+  .mobile-margin-top {
+    margin-top: 64px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+
+  .sm-m-auto {
+    margin: auto;
+  }
+
+  .responsive-width {
+    width: 75%;
+    height: 250px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+
+  .sm-m-auto {
+    margin: auto;
+  }
+
+  .responsive-width {
+    width: 75%;
+    height: 200px;
+  }
+}
+
+/* navbar display  */
+
+@media only screen and (min-width: 576px) {
+
+  .top-spacing {
+    margin-top: 65px !important;
+  }
+
+  .d-sidebar {
+    display: none !important;
+  }
+
+  .d-mobile {
+    display: block !important;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .top-spacing {
+    margin-top: 65px !important;
+  }
+
+  .d-sidebar {
+    display: none !important;
+  }
+
+  .d-mobile {
+    display: block !important;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .top-spacing {
+    margin-top: 65px !important;
+  }
+
+  .d-sidebar {
+    display: none !important;
+  }
+
+  .d-mobile {
+    display: block !important;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .top-spacing {
+    margin-top: 65px !important;
+  }
+
+  .d-sidebar {
+    display: none !important;
+  }
+
+  .d-mobile {
+    display: block !important;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .top-spacing {
+    margin-top: 0 !important;
+  }
+  
+  .d-sidebar {
+    display: block !important;
+  }
+
+  .d-mobile {
+    display: none !important;
+  }
 }

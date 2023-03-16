@@ -11,43 +11,43 @@ function Timeline() {
 
   return (
     
-    <Col xs={10}>
-      <Row className='mb-25'>
-      <Col xs={12} className='pt-12'>
-          <div className='top-info-bar'>
+    <Col xs={12} xl={10}>
+      <Row>
+      <Col xs={12} xl={12} className='pt-12'>
+          <div className='top-info-bar xs={12} xs-text-center'>
             <h1 className="bold">Timeline</h1>
           </div>
         </Col>
       </Row>
 
-      <Row className='mb-25'>
-        <Col xs={12}>
+      <Row>
+        <Col xs={12} xl={12}>
           <div className="input-box">
             <input type="text" className="search-bar" placeholder="Type Pokemon name"/>                  
           </div>
         </Col>
       </Row>
 
-      <Row className="mb-25">
-        <Col xs={8} className='d-flex'>
+      <Row>
+        <Col xs={12} xl={8} className='d-flex'>
           <PokemonDetails/>
         </Col>
 
-        <Col xs={4} className='d-flex'>
+        <Col xs={12} xl={4} className='d-flex'>
           <div className='rounded-container bg-mid-grey'>
             <h3 className='bold mb-15 text-center'>Evolution</h3>
           </div>
         </Col>
       </Row>
 
-      <Row className="mb-25">
-        <Col xs={12} className='d-flex'>
+      <Row>
+        <Col xs={12} xl={12} className='d-flex'>
           <LevelChart/>
         </Col>
       </Row>
 
-      <Row className="mb-25">
-        <Col xs={12} className='d-flex'>
+      <Row>
+        <Col xs={12} xl={12} className='d-flex'>
           <LevelChart/>
         </Col>
       </Row>

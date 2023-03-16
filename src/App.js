@@ -11,6 +11,7 @@ import Landing from './pages/Landing';
 import Compare from './pages/Compare';
 import Timeline from './pages/Timeline';
 import Sidebar from './components/sidebar';
+import MobileNav from './components/mobileNav';
 
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -19,10 +20,12 @@ import Row from 'react-bootstrap/Row';
 
 function App() {
   return (
-    <Container>
-      <Row>
-
-        <Sidebar className='align-items-center' xs={2}/>
+    <Container className='mobile-margin-top'>
+      <Row className='d-mobile'>
+        <MobileNav/>
+      </Row>
+      <Row className='top-spacing'>
+        <Sidebar className='align-items-center' md={2}/>
 
         <Routes>
           <Route path='/' element= { <Landing /> } />

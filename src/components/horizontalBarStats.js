@@ -79,6 +79,7 @@ const HorizontalBarStats = () => {
 	return (
 
 		<Bar data={data} options= {{
+			maintainAspectRatio: false,
 			indexAxis: 'y',
 			scales: {
 				y: {

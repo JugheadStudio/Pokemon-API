@@ -144,25 +144,23 @@ function PieStats() {
 
     <div className='rounded-container bg-dark-grey'>
       <h3 className='bold mb-15 text-center'>Stats Comparison</h3>
-      <p id='pieChartName' className='text-center'>Below you will find the base stats of <span className='capitalize'>{userPokemonName}</span> compared to <span className='capitalize'>{randomPokemonName1}</span>, <span className='capitalize'>{randomPokemonName2}</span> and <span className='capitalize'>{randomPokemonName3}</span> which were randomly selected.</p>
-      <div className='rounded-container'>
+      <p id='pieChartName' className='text-center mb-25'>Below you will find the base stats of <span className='capitalize'>{userPokemonName}</span> compared to <span className='capitalize'>{randomPokemonName1}</span>, <span className='capitalize'>{randomPokemonName2}</span> and <span className='capitalize'>{randomPokemonName3}</span> which were randomly selected.</p>
       <Row className="align-items-center">
-        <Col xs={8}>
+        <Col xs={12} md={8} lg={8} className="mb-25">
           <div className='w-100'>
-            <div className='w-75'>
-              <Doughnut options={config} data={pieData} />
+            <div className='responsive-width sm-m-auto'>
+              <Doughnut options={config} data={pieData} className='m-auto'/>
             </div>
           </div>
         </Col>
 
-        <Col xs={4}>
+        <Col xs={12} md={4} lg={4} className='xs-text-center'>
           <p className="mb-10 capitalize item-legend">{userPokemonName}</p>
           <p className="mb-10 capitalize item-legend">{randomPokemonName1}</p>
           <p className="mb-10 capitalize item-legend">{randomPokemonName2}</p>
           <p className="mb-10 capitalize item-legend">{randomPokemonName3}</p>
         </Col>
       </Row>
-    </div>
     </div>
 
   )

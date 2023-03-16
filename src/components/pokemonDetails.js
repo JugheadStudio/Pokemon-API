@@ -60,11 +60,11 @@ function PokemonDetails() {
     return (
       <div className='rounded-container bg-dark-grey'>
         <Row className="align-items-center">
-          <Col xs={6}>
+          <Col xs={12} md={6} lg={6} className='text-center'>
             <img src={pokemonSprite} className="pokemon-main-sprite" alt="" />
           </Col>
 
-          <Col xs={6}>
+          <Col xs={12} md={6} lg={6} className='xs-text-center pb-25 pt-25'>
             <h1 className="capitalize mb-20 bold">{pokemonName}</h1>
             <hr/>
             <p className="mb-10 mt-20"><strong>Dex Number:</strong> {dexNumber}</p>

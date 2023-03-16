@@ -88,7 +88,7 @@ function RadarStats() {
             }
           }
         }
-      }} data={radialData} />
+      }} data={radialData} className='m-auto'/>
     )
   }
   
