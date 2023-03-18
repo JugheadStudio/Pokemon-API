@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 // Components
 import PokemonDetails from '../components/pokemonDetails';
 import LevelChart from '../components/levelChart';
+import SearchBar from '../components/searchBar';
 
 function Timeline() {
 
@@ -23,7 +24,7 @@ function Timeline() {
       <Row>
         <Col xs={12} xl={12}>
           <div className="input-box">
-            <input type="text" className="search-bar" placeholder="Type Pokemon name"/>                  
+          <SearchBar/>                
           </div>
         </Col>
       </Row>

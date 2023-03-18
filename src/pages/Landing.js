@@ -3,6 +3,7 @@ import PokemonDetails from '../components/pokemonDetails';
 import RadarStats from '../components/radarStats';
 import HorizontalBarStats from '../components/horizontalBarStats';
 import WeaknessTable from '../components/weaknessTable';
+import SearchBar from '../components/searchBar';
 
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -13,10 +14,10 @@ function Landing() {
 
   return (
 
-    <Col xs={12} m={6} xl={10}>
+    <Col xs={12} md={6} xl={10}>
       {/* API info ===================== */}
       <Row className=''>
-        <Col xs={12} m={6} xl={12} className='pt-12'>
+        <Col xs={12} md={6} xl={12} className='pt-12'>
           <div className='top-info-bar xs-text-center'>
             <h1 className="mb-15 bold">About the API</h1>
             <p className="mb-10">Below you will find data pulled from the PokeAPI that are being used to create informative charts that display various aspects of the Pokemon universe.</p>
@@ -26,20 +27,14 @@ function Landing() {
       </Row>
 
       <Row className='mb-12'>
-        <Col xs={12} m={6} xl={12}>
+        <Col xs={12} md={6} xl={12}>
           <div>
             <h2 className="bold xs-text-center">Pokemon Data</h2>
           </div>
         </Col>
       </Row>
 
-      <Row className=''>
-        <Col xs={12} m={6} xl={12}>
-          <div className="input-box">
-            <input type="text" className="search-bar" placeholder="Type Pokemon name"/>                  
-          </div>
-        </Col>
-      </Row>
+      <SearchBar/>
 
       <Row className="">
         <Col xs={12} xl={6} xxl={8} className='d-flex'>
@@ -55,7 +50,7 @@ function Landing() {
       </Row>
 
       <Row>
-        <Col xs={12} m={6} xl={6} className='d-flex '>
+        <Col xs={12} md={6} xl={6} className='d-flex '>
           <div className='rounded-container bg-dark-grey mb-12-reset'>
             <h3 className='bold mb-15 text-center'>Pokemon Stats</h3>
             <p className='mb-15 text-center'>Below is a breakdown of the selected Pokemon's stats.</p>
@@ -65,7 +60,7 @@ function Landing() {
           </div>
         </Col>
 
-        <Col xs={12} m={6} xl={6} className='d-flex'>
+        <Col xs={12} md={6} xl={6} className='d-flex'>
           <WeaknessTable/>
         </Col>
       </Row>

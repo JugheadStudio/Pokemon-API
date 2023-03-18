@@ -131,15 +131,6 @@ function PieStats() {
     ],
   };
 
-  const config = {
-    type: 'doughnut',
-    data: {},
-    options: {
-      
-    },
-    plugins: []
-  }
-
   return (
 
     <div className='rounded-container bg-dark-grey'>
@@ -149,7 +140,7 @@ function PieStats() {
         <Col xs={12} md={8} lg={8} className="mb-25">
           <div className='w-100'>
             <div className='responsive-width sm-m-auto'>
-              <Doughnut options={config} data={pieData} className='m-auto'/>
+              <Doughnut data={pieData} className='m-auto'/>
             </div>
           </div>
         </Col>

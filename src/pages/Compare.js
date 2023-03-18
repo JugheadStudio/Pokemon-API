@@ -3,6 +3,7 @@ import PokemonDetails from '../components/pokemonDetails';
 import RadarStats from '../components/radarStats';
 import HorizontalBarStats from '../components/horizontalBarStats';
 import PieStats from '../components/pieStats';
+import SearchBar from '../components/searchBar';
 
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -28,13 +29,13 @@ function Compare() {
       <Row>
         <Col xs={12} xl={6}>
           <h2 className="mb-15 bold text-center">Pokemon 1</h2>
-          <input type="text" className="search-bar" placeholder="Type Pokemon name"/>         
+          <SearchBar/>      
           <PokemonDetails/>
         </Col>
 
         <Col xs={12} xl={6}>
-          <h2 className="mb-15 bold text-center">Pokemon 2</h2>
-          <input type="text" className="search-bar" placeholder="Type Pokemon name"/>                  
+          <h2 className="mb-15 bold text-center">Pokemon 2</h2>          
+          <SearchBar/>     
           <PokemonDetails/>
         </Col>
       </Row>
