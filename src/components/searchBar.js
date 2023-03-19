@@ -7,14 +7,15 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 let allPokemon = [];
-let searchedPokemon = [];
+let searchedPokemonResults = [];
 let userSearchInput = '';
-
+export let pokemonChosenFromSearch = 'rayquaza';
 
 function SearchBar() {
 
   useEffect(() => {
-      axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1281')
+    // https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1281
+      axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1008')
       .then((res) => {
 
         for ( var i = 0; i < res.data.results.length; i++ ) {
@@ -30,39 +31,41 @@ function SearchBar() {
     function getUserInput() {
       userSearchInput = document.getElementById("userSearchInput");
 
-      find(userSearchInput.value)
-      // console.log(searchedPokemon);
+      filterThroughResults(userSearchInput.value)
       return
     }
 
-    function find(...letters){
-      searchedPokemon = allPokemon.filter(w => letters.every(l => w.includes(l)));
-      updateText()
+    function filterThroughResults(...letters){
+      searchedPokemonResults = allPokemon.filter(w => letters.every(l => w.includes(l)));
+      updateSearchResults()
       return
     }
 
-    function updateText(index) {
-      let tablePos = document.getElementById('table');
-      let pokemon = searchedPokemon.toString();
-      let displayPokemon = []
-      // let tableRow = tablePos.insertRow(index+1)
-      // let cell1 = tableRow.insertCell(0)
+    function updatePokemonChosenFromSearch(el) {
+      pokemonChosenFromSearch = el.target.innerHTML
+      console.log(pokemonChosenFromSearch + " this is the new link");
+    }
 
-      // cell1.innerHTML = searchedPokemon;
-      // console.log(pokemon);
-      tablePos.innerHTML = '';
+    function updateSearchResults() {
+      let searchResultsContainer = document.getElementById('table');
+      let displayPokemonResults = []
 
-      displayPokemon.push(searchedPokemon)
+      searchResultsContainer.innerHTML = '';
 
-      for ( var i = 0; i < displayPokemon[0].length; i++ ) {
+      displayPokemonResults.push(searchedPokemonResults)
 
-        let tableRow = tablePos.insertRow(i);
+      for ( var i = 0; i < displayPokemonResults[0].length; i++ ) {
 
-        if (displayPokemon[0].length > 0) {
-          tableRow.innerHTML = '<td>' + searchedPokemon[i] + '</td>';
-          
+        let newTableRowItem = searchResultsContainer.insertRow(i);
+
+        if (displayPokemonResults[0].length > 0) {
+          newTableRowItem.innerHTML = '<td value="' + searchedPokemonResults[i] + '">' + searchedPokemonResults[i] + '</td>';
+          newTableRowItem.addEventListener('click', function (e) {
+            updatePokemonChosenFromSearch(e)
+            console.log(displayPokemonResults);
+          });
         } else {
-          tableRow.innerHTML = '<td>No Pokemon with that name</td>'
+          newTableRowItem.innerHTML = '<td>No Pokemon with that name</td>'
         }
       }
     }
@@ -73,7 +76,7 @@ function SearchBar() {
       <Row className=''>
         <Col xs={12} md={6} xl={12}>
           <div className="input-box">
-            <input id='userSearchInput' type="text" className="search-bar" placeholder="Type Pokemon name" onChange={() => getUserInput()}/>           
+            <input id='userSearchInput' type="text" className="search-bar" placeholder="Type Pokemon name" onChange={() => getUserInput()}/>        
           </div>
         </Col>
 

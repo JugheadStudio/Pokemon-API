@@ -6,10 +6,27 @@ import Table from 'react-bootstrap/Table';
 
 function WeaknessTable() {
 
-  const [apiData, setApiData] =useState([]);
+  const [norDamage, setNormalDamage] = useState("")
+  const [firDamage, setFireDamage] = useState("")
+  const [watDamage, setWaterDamage] = useState("")
+  const [eleDamage, setElectricDamage] = useState("")
+  const [graDamage, setGrasDamage] = useState("")
+  const [iceDamage, setICeDamage] = useState("")
+  const [figDamage, setFightingDamage] = useState("")
+  const [poiDamage, setPoisonDamage] = useState("")
+  const [groDamage, setGroundDamage] = useState("")
+  const [flyDamage, setFlyingDamage] = useState("")
+  const [psyDamage, setPsychicDamage] = useState("")
+  const [bugDamage, setBugDamage] = useState("")
+  const [rocDamage, setRockDamage] = useState("")
+  const [ghoDamage, setGhostDamage] = useState("")
+  const [draDamage, setDragonDamage] = useState("")
+  const [darDamage, setDarkDamage] = useState("")
+  const [steDamage, setSteelDamage] = useState("")
+  const [faiDamage, setFairyDamage] = useState("")
 
   useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/pokemon/rayquaza')
+    axios.get('https://pokeapi.co/api/v2/type/16/')
     .then((res) => {
       // console.log(res.data)
 
@@ -26,15 +43,15 @@ function WeaknessTable() {
       <Table bordered>
         <tbody>
           <tr>
-            <td>0</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>{norDamage}</td>
+            <td>{firDamage}</td>
+            <td>{watDamage}</td>
+            <td>{eleDamage}</td>
+            <td>{graDamage}</td>
+            <td>{iceDamage}</td>
+            <td>{figDamage}</td>
+            <td>{poiDamage}</td>
+            <td>{groDamage}</td>
           </tr>
           
           <tr>
@@ -62,15 +79,15 @@ function WeaknessTable() {
           </tr>
 
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>0</td>
+            <td>{flyDamage}</td>
+            <td>{psyDamage}</td>
+            <td>{bugDamage}</td>
+            <td>{rocDamage}</td>
+            <td>{ghoDamage}</td>
+            <td>{draDamage}</td>
+            <td>{darDamage}</td>
+            <td>{steDamage}</td>
+            <td>{faiDamage}</td>
           </tr>
         </tbody>
       </Table>

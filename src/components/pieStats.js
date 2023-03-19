@@ -46,7 +46,6 @@ function PieStats() {
       setuserPokemonName(res.data.name)
       setuserPokemonStats(userPokemonStatsTotal)
 
-      console.log(userPokemonStatsTotal)
     })
     .catch((err) => {
         console.log(err);
@@ -67,7 +66,6 @@ function PieStats() {
       setrandomPokemonName1(res.data.name)
       setrandomPokemonStats1(RandomPokemonStatsTotal1)
 
-      console.log(RandomPokemonStatsTotal1)
     })
     .catch((err) => {
         console.log(err);
@@ -88,7 +86,6 @@ function PieStats() {
       setrandomPokemonName2(res.data.name)
       setrandomPokemonStats2(RandomPokemonStatsTotal2)
 
-      console.log(RandomPokemonStatsTotal2)
     })
     .catch((err) => {
         console.log(err);
@@ -109,7 +106,6 @@ function PieStats() {
       setrandomPokemonName3(res.data.name)
       setrandomPokemonStats3(RandomPokemonStatsTotal3)
 
-      console.log(RandomPokemonStatsTotal3)
     })
     .catch((err) => {
         console.log(err);

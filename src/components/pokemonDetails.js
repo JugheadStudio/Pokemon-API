@@ -1,6 +1,9 @@
 import React from 'react';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+
+// Variables
+import { pokemonChosenFromSearch } from './searchBar'
 
 // Bootstrap
 import Col from 'react-bootstrap/Col';
@@ -9,8 +12,6 @@ import Row from 'react-bootstrap/Row';
 function PokemonDetails() {
 
   // PokeAPI variables =====================
-
-  const [apiData, setApiData] =useState([]);
   const [pokemonSprite, setPokemonSprite] = useState("")
   const [pokemonName, setPokemonName] = useState("")
   const [dexNumber, setDexNumber] = useState("")
@@ -22,10 +23,10 @@ function PokemonDetails() {
   // Get Pokemon data from API =====================
 
   useEffect(() => {
-      axios.get('https://pokeapi.co/api/v2/pokemon/rayquaza')
+
+      axios.get('https://pokeapi.co/api/v2/pokemon/' + pokemonChosenFromSearch)
       .then((res) => {
         // console.log(res.data)
-
         setPokemonSprite(res.data.sprites.other["official-artwork"].front_shiny)
         setPokemonName(res.data.species.name)
         setDexNumber(res.data.id)
@@ -55,7 +56,7 @@ function PokemonDetails() {
       .catch((err) => {
           console.log(err);
       })
-  }, [])
+    }, [])
   
     return (
       <div className='rounded-container bg-dark-grey'>
