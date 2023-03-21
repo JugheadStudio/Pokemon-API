@@ -1,6 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 
+// Pokemon data
+import { getPokemonData } from '../PokemonData';
+
 // Components
 import PokemonDetails from '../components/pokemonDetails';
 import RadarStats from '../components/radarStats';
@@ -15,19 +18,23 @@ import Row from 'react-bootstrap/Row';
 
 const Compare = () => {
 
-  const [dataToChild, setdataToChild] = useState('rayquaza')
-  const [urlOneToChild, setUrlOneToChild] = useState('16')
-  const [urlTwoToChild, setUrlTwoToChild] = useState('3')
-
-  const pull_pokemon_name = (data) => {
-    setdataToChild(data)
-    // console.log(dataToChild + " this is from the prop");
+  const pull_pokemon_name = (pokemonNameChosenFromSearch) => {
+    setNewPokemonNameFromSearch(pokemonNameChosenFromSearch)
+    // console.log(newPokemonNameFromSearch + " this is from the prop");
   }
 
-  const pull_pokemon_type_url = (url1, url2) => {
-    setUrlOneToChild(url1)
-    setUrlTwoToChild(url2)
+  const [pokemonData, setPokemonData] = useState(null);
+  const [newPokemonNameFromSearch, setNewPokemonNameFromSearch] = useState('rayquaza')
+
+  useEffect(() => {
+    getPokemonData(newPokemonNameFromSearch).then(data => setPokemonData(data));
+  }, [newPokemonNameFromSearch]);
+
+  if (!pokemonData) {
+    return <p>Loading...</p>;
   }
+
+  // console.log(pokemonData);
 
   return (
     
@@ -47,13 +54,13 @@ const Compare = () => {
         <Col xs={12} xl={6}>
           <h2 className="mb-15 bold text-center">Pokemon 1</h2>
           <SearchBar func={pull_pokemon_name}/>      
-          <PokemonDetails parentToChild={dataToChild} func={pull_pokemon_type_url}/>
+          <PokemonDetails pokemonData={pokemonData}/>
         </Col>
 
         <Col xs={12} xl={6}>
           <h2 className="mb-15 bold text-center">Pokemon 2</h2>          
           <SearchBar func={pull_pokemon_name}/>     
-          <PokemonDetails parentToChild={dataToChild} func={pull_pokemon_type_url}/>
+          <PokemonDetails pokemonData={pokemonData}/>
         </Col>
       </Row>
 
@@ -63,7 +70,7 @@ const Compare = () => {
             <h3 className='bold mb-15'>Pokemon 1 Stats Overview</h3>
             <div className='w-100 text-center '>
               <div className='radar-size m-auto'>
-                <RadarStats parentToChild={dataToChild}/>
+                <RadarStats pokemonData={pokemonData}/>
               </div>
             </div>
           </div>
@@ -74,7 +81,7 @@ const Compare = () => {
             <h3 className='bold mb-15'>Pokemon 2 Stats Overview</h3>
             <div className='w-100 text-center '>
               <div className='radar-size m-auto'>
-                <RadarStats parentToChild={dataToChild}/>
+                <RadarStats pokemonData={pokemonData}/>
               </div>
             </div>
           </div>
@@ -87,7 +94,7 @@ const Compare = () => {
             <h3 className='bold mb-15'>Pokemon 1 Base Stats</h3>
             <div className='w-100 text-center '>
               <div className='w-75 m-auto chart-wrapper '>
-                <HorizontalBarStats parentToChild={dataToChild}/>
+                <HorizontalBarStats pokemonData={pokemonData}/>
               </div>
             </div>
           </div>
@@ -98,7 +105,7 @@ const Compare = () => {
             <h3 className='bold mb-15'>Pokemon 2 Base Stats</h3>
             <div className='w-100 text-center '>
               <div className='w-75 m-auto chart-wrapper '>
-                <HorizontalBarStats parentToChild={dataToChild}/>
+                <HorizontalBarStats pokemonData={pokemonData}/>
               </div>
             </div>
           </div>
@@ -107,11 +114,11 @@ const Compare = () => {
 
       <Row>
         <Col xs={12} xl={6}>
-          <PieStats parentToChild={dataToChild}/>
+          <PieStats pokemonData={pokemonData}/>
         </Col>
 
         <Col xs={12} xl={6}>
-          <PieStats parentToChild={dataToChild}/>
+          <PieStats pokemonData={pokemonData}/>
         </Col>
       </Row>
 

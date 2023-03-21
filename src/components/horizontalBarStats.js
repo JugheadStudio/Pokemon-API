@@ -13,30 +13,20 @@ ChartJS.register(
 
 const HorizontalBarStats = (props) => {
 
-	const newURL = props.parentToChild;
-	const [PokemonData, setPokemonData] = useState();
+	const pokemonData = props.pokemonData;
 
-	useEffect(() => {
-			axios.get('https://pokeapi.co/api/v2/pokemon/' + newURL)
-			.then((res) => {
-					setPokemonData(res.data)        
-			})
-	}, [newURL])
-		
-		const hp = PokemonData?.stats[0].base_stat;
-		const Attack = PokemonData?.stats[1].base_stat;
-		const Defense = PokemonData?.stats[2].base_stat;
-		const SpecialAttack = PokemonData?.stats[3].base_stat;
-		const SpecialDeffence = PokemonData?.stats[4].base_stat;
-		const Speed = PokemonData?.stats[5].base_stat;
-
-		const labels = ['HP' , 'Atk', 'Def', 'Sp.Atk', 'Sp.Def', 'Spd'];
+		const labels = ['HP', 'Attack', 'Defence', 'Speed', 'Sp. Def', 'Sp. Atk']
 	
 		const data = {
 			labels,
 			datasets: [
 				{
-					data: [hp, Attack, Defense, SpecialAttack, SpecialDeffence, Speed],
+					data: [pokemonData.baseStats.hp, 
+            pokemonData.baseStats.attack, 
+            pokemonData.baseStats.defense, 
+            pokemonData.baseStats.speed, 
+            pokemonData.baseStats.spDefense, 
+            pokemonData.baseStats.spAttack],
 					backgroundColor: [
 						'rgba(54, 162, 235, 1)',
 						'rgba(54, 162, 235, 1)',
@@ -57,24 +47,6 @@ const HorizontalBarStats = (props) => {
 					barPercentage: 0.5
 				},
 			],
-		};
-
-		const config = {
-			type: 'bar',
-			options: {
-				indexAxis: 'y',
-				scales: {
-					y: {
-						beginAtZero: true
-					}
-				},
-				elements: {
-					bar: {
-						borderWidth: 0,
-						borderRadius: 25
-					}
-				}
-			},
 		};
 
 	return (

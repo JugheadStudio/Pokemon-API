@@ -23,7 +23,9 @@ ChartJS.register(
   PointElement 
 );
 
-const LevelChart = () => {
+const LevelChart = (props) => {
+
+  const pokemonData = props.pokemonData
 
   const cssColorVar = getComputedStyle(document.body);
 
@@ -34,7 +36,7 @@ const LevelChart = () => {
   // Get Pokemon data from API =====================
 
   useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/growth-rate/1/')
+    axios.get(pokemonData.growthRateUrl)
     .then((res) => {
 
       const pokemonLevel = [];
@@ -52,7 +54,7 @@ const LevelChart = () => {
     .catch((err) => {
         console.log(err);
     })
-  }, []);
+  }, [pokemonData.growthRateUrl]);
 
   const levelData = {
     labels: pokemonLevelStats,

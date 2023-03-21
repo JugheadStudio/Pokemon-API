@@ -6,6 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
+// Pokemon data
+import { getPokemonData } from '../PokemonData';
+
 // Components
 import PokemonDetails from '../components/pokemonDetails';
 import LevelChart from '../components/levelChart';
@@ -13,13 +16,21 @@ import SearchBar from '../components/searchBar';
 
 const Timeline = () => {
 
-  const [dataToChild, setdataToChild] = useState('rayquaza')
-
-  const pull_pokemon_name = (data) => {
-    setdataToChild(data)
-    // console.log(dataToChild + " this is from the prop");
+  const pull_pokemon_name = (pokemonNameChosenFromSearch) => {
+    setNewPokemonNameFromSearch(pokemonNameChosenFromSearch)
+    // console.log(newPokemonNameFromSearch + " this is from the prop");
   }
 
+  const [pokemonData, setPokemonData] = useState(null);
+  const [newPokemonNameFromSearch, setNewPokemonNameFromSearch] = useState('rayquaza')
+
+  useEffect(() => {
+    getPokemonData(newPokemonNameFromSearch).then(data => setPokemonData(data));
+  }, [newPokemonNameFromSearch]);
+
+  if (!pokemonData) {
+    return <p>Loading...</p>;
+  }
   return (
     
     <Col xs={12} xl={10}>
@@ -41,7 +52,7 @@ const Timeline = () => {
 
       <Row>
         <Col xs={12} xl={8} className='d-flex'>
-        <PokemonDetails parentToChild={dataToChild}/>
+        <PokemonDetails pokemonData={pokemonData}/>
         </Col>
 
         <Col xs={12} xl={4} className='d-flex'>
@@ -53,13 +64,13 @@ const Timeline = () => {
 
       <Row>
         <Col xs={12} xl={12} className='d-flex'>
-          <LevelChart/>
+          <LevelChart pokemonData={pokemonData}/>
         </Col>
       </Row>
 
       <Row>
         <Col xs={12} xl={12} className='d-flex'>
-          <LevelChart/>
+          <LevelChart pokemonData={pokemonData}/>
         </Col>
       </Row>
 

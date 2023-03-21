@@ -2,6 +2,9 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+// Pokemon data
+import { getPokemonData } from '../PokemonData';
+
 // Bootstrap
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -14,14 +17,9 @@ ChartJS.register(ArcElement);
 
 const PieStats = (props) => {
 
-  const newURL = props.parentToChild;
+  const pokemonData = props.pokemonData;
 
   const cssColorVar = getComputedStyle(document.body);
-
-  // PokeAPI variables =====================
-  // Pokemon user searched for
-  const [userPokemonStats, setuserPokemonStats] = useState("");
-  const [userPokemonName, setuserPokemonName] = useState("");
 
   // Random pokemon
   const [randomPokemonStats1, setrandomPokemonStats1] = useState("");
@@ -32,27 +30,6 @@ const PieStats = (props) => {
 
   const [randomPokemonStats3, setrandomPokemonStats3] = useState("");
   const [randomPokemonName3, setrandomPokemonName3] = useState("");
-
-  // Get Pokemon data from API =====================
-
-  useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/pokemon/' + newURL)
-    .then((res) => {
-
-      let userPokemonStatsTotal = 0;
-
-      for ( var i = 0; i < res.data.stats.length; i++ ) {
-        userPokemonStatsTotal += res.data.stats[i].base_stat;
-      }
-
-      setuserPokemonName(res.data.name)
-      setuserPokemonStats(userPokemonStatsTotal)
-
-    })
-    .catch((err) => {
-        console.log(err);
-    })
-  }, [newURL])
 
   // Random generated Pokemon 1
   useEffect(() => {
@@ -117,7 +94,7 @@ const PieStats = (props) => {
   const pieData = {
     datasets: [
       {
-        data: [userPokemonStats, randomPokemonStats1, randomPokemonStats2, randomPokemonStats3],
+        data: [pokemonData.baseStats.total, randomPokemonStats1, randomPokemonStats2, randomPokemonStats3],
         backgroundColor: [
           cssColorVar.getPropertyValue('--chart1'),
           cssColorVar.getPropertyValue('--chart2'),
@@ -133,7 +110,7 @@ const PieStats = (props) => {
 
     <div className='rounded-container bg-dark-grey'>
       <h3 className='bold mb-15 text-center'>Stats Comparison</h3>
-      <p id='pieChartName' className='text-center mb-25'>Below you will find the base stats of <span className='capitalize'>{userPokemonName}</span> compared to <span className='capitalize'>{randomPokemonName1}</span>, <span className='capitalize'>{randomPokemonName2}</span> and <span className='capitalize'>{randomPokemonName3}</span> which were randomly selected.</p>
+      <p id='pieChartName' className='text-center mb-25'>Below you will find the base stats of <span className='capitalize'>{pokemonData.name}</span> compared to <span className='capitalize'>{randomPokemonName1}</span>, <span className='capitalize'>{randomPokemonName2}</span> and <span className='capitalize'>{randomPokemonName3}</span> which were randomly selected.</p>
       <Row className="align-items-center">
         <Col xs={12} md={8} lg={8} className="mb-25">
           <div className='w-100'>
@@ -144,7 +121,7 @@ const PieStats = (props) => {
         </Col>
 
         <Col xs={12} md={4} lg={4} className='xs-text-center'>
-          <p className="mb-10 capitalize item-legend">{userPokemonName}</p>
+          <p className="mb-10 capitalize item-legend">{pokemonData.name}</p>
           <p className="mb-10 capitalize item-legend">{randomPokemonName1}</p>
           <p className="mb-10 capitalize item-legend">{randomPokemonName2}</p>
           <p className="mb-10 capitalize item-legend">{randomPokemonName3}</p>

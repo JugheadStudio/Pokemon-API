@@ -1,6 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 
+// Pokemon data
+import { getPokemonData } from '../PokemonData';
+
 // Components
 import PokemonDetails from '../components/pokemonDetails';
 import RadarStats from '../components/radarStats';
@@ -15,19 +18,24 @@ import Row from 'react-bootstrap/Row';
 
 const Landing = () => {
 
-  const [dataToChild, setdataToChild] = useState('rayquaza')
-  const [urlOneToChild, setUrlOneToChild] = useState('16')
-  const [urlTwoToChild, setUrlTwoToChild] = useState('3')
-
-  const pull_pokemon_name = (data) => {
-    setdataToChild(data)
-    // console.log(dataToChild + " this is from the prop");
+  const pull_pokemon_name = (pokemonNameChosenFromSearch) => {
+    setNewPokemonNameFromSearch(pokemonNameChosenFromSearch)
+    // console.log(newPokemonNameFromSearch + " this is from the prop");
   }
 
-  const pull_pokemon_type_url = (url1, url2) => {
-    setUrlOneToChild(url1)
-    setUrlTwoToChild(url2)
+  const [pokemonData, setPokemonData] = useState(null);
+  const [newPokemonNameFromSearch, setNewPokemonNameFromSearch] = useState('rayquaza')
+
+  useEffect(() => {
+    getPokemonData(newPokemonNameFromSearch).then(data => setPokemonData(data));
+  }, [newPokemonNameFromSearch]);
+
+  if (!pokemonData) {
+    return <p>Loading...</p>;
   }
+
+  // console.log(pokemonData);
+
 
   return (
 
@@ -55,13 +63,13 @@ const Landing = () => {
 
       <Row className="">
         <Col xs={12} xl={6} xxl={8} className='d-flex'>
-          <PokemonDetails parentToChild={dataToChild} func={pull_pokemon_type_url}/>
+          <PokemonDetails pokemonData={pokemonData}/>
         </Col>
 
         <Col xs={12} xl={6} xxl={4} className='d-flex'>
           <div className='rounded-container bg-mid-grey'>
             <h3 className='bold mb-15 text-center'>Stats Chart</h3>
-            <RadarStats parentToChild={dataToChild}/>
+            <RadarStats pokemonData={pokemonData}/>
           </div>
         </Col>
       </Row>
@@ -72,13 +80,13 @@ const Landing = () => {
             <h3 className='bold mb-15 text-center'>Pokemon Stats</h3>
             <p className='mb-15 text-center'>Below is a breakdown of the selected Pokemon's stats.</p>
             <div className='chart-wrapper'>
-              <HorizontalBarStats parentToChild={dataToChild}/>
+              <HorizontalBarStats pokemonData={pokemonData}/>
             </div>
           </div>
         </Col>
 
         <Col xs={12} md={6} xl={6} className='d-flex'>
-          <WeaknessTable  parentToChild={dataToChild} typeUrlOneToChild={urlOneToChild} typeUrlTwoToChild={urlTwoToChild}/>
+          {/* <WeaknessTable  parentToChild={newPokemonNameFromSearch} typeUrlOneToChild={pokemonData} typeUrlTwoToChild={pokemonData}/> */}
         </Col>
       </Row>
 

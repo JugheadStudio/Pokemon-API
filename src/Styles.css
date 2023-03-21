@@ -32,6 +32,12 @@
 
 /* Search Box ================== */
 
+#searchBarTable {
+  background-color: var(--dark-grey);
+  position: absolute;
+  width: 100%;
+}
+
 .search-bar{
   background-color: var(--dark-grey);
   border: none;
@@ -48,6 +54,11 @@
   background-color: var(--dark-grey);
   box-shadow: none;
   border: none;
+}
+
+.input-box {
+  position: relative;
+  z-index: 100;
 }
 
 /*================================== */
