@@ -1,3 +1,6 @@
+import React from 'react';
+import { useState, useEffect } from "react";
+
 // Components
 import PokemonDetails from '../components/pokemonDetails';
 import RadarStats from '../components/radarStats';
@@ -10,7 +13,21 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-function Compare() {
+const Compare = () => {
+
+  const [dataToChild, setdataToChild] = useState('rayquaza')
+  const [urlOneToChild, setUrlOneToChild] = useState('16')
+  const [urlTwoToChild, setUrlTwoToChild] = useState('3')
+
+  const pull_pokemon_name = (data) => {
+    setdataToChild(data)
+    // console.log(dataToChild + " this is from the prop");
+  }
+
+  const pull_pokemon_type_url = (url1, url2) => {
+    setUrlOneToChild(url1)
+    setUrlTwoToChild(url2)
+  }
 
   return (
     
@@ -29,14 +46,14 @@ function Compare() {
       <Row>
         <Col xs={12} xl={6}>
           <h2 className="mb-15 bold text-center">Pokemon 1</h2>
-          <SearchBar/>      
-          <PokemonDetails/>
+          <SearchBar func={pull_pokemon_name}/>      
+          <PokemonDetails parentToChild={dataToChild} func={pull_pokemon_type_url}/>
         </Col>
 
         <Col xs={12} xl={6}>
           <h2 className="mb-15 bold text-center">Pokemon 2</h2>          
-          <SearchBar/>     
-          <PokemonDetails/>
+          <SearchBar func={pull_pokemon_name}/>     
+          <PokemonDetails parentToChild={dataToChild} func={pull_pokemon_type_url}/>
         </Col>
       </Row>
 
@@ -46,7 +63,7 @@ function Compare() {
             <h3 className='bold mb-15'>Pokemon 1 Stats Overview</h3>
             <div className='w-100 text-center '>
               <div className='radar-size m-auto'>
-                <RadarStats/>
+                <RadarStats parentToChild={dataToChild}/>
               </div>
             </div>
           </div>
@@ -57,7 +74,7 @@ function Compare() {
             <h3 className='bold mb-15'>Pokemon 2 Stats Overview</h3>
             <div className='w-100 text-center '>
               <div className='radar-size m-auto'>
-                <RadarStats/>
+                <RadarStats parentToChild={dataToChild}/>
               </div>
             </div>
           </div>
@@ -70,7 +87,7 @@ function Compare() {
             <h3 className='bold mb-15'>Pokemon 1 Base Stats</h3>
             <div className='w-100 text-center '>
               <div className='w-75 m-auto chart-wrapper '>
-                <HorizontalBarStats/>
+                <HorizontalBarStats parentToChild={dataToChild}/>
               </div>
             </div>
           </div>
@@ -81,7 +98,7 @@ function Compare() {
             <h3 className='bold mb-15'>Pokemon 2 Base Stats</h3>
             <div className='w-100 text-center '>
               <div className='w-75 m-auto chart-wrapper '>
-                <HorizontalBarStats/>
+                <HorizontalBarStats parentToChild={dataToChild}/>
               </div>
             </div>
           </div>
@@ -90,11 +107,11 @@ function Compare() {
 
       <Row>
         <Col xs={12} xl={6}>
-          <PieStats/>
+          <PieStats parentToChild={dataToChild}/>
         </Col>
 
         <Col xs={12} xl={6}>
-          <PieStats/>
+          <PieStats parentToChild={dataToChild}/>
         </Col>
       </Row>
 

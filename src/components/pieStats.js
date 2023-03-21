@@ -12,7 +12,9 @@ import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement);
 
-function PieStats() {
+const PieStats = (props) => {
+
+  const newURL = props.parentToChild;
 
   const cssColorVar = getComputedStyle(document.body);
 
@@ -34,7 +36,7 @@ function PieStats() {
   // Get Pokemon data from API =====================
 
   useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/pokemon/rayquaza')
+    axios.get('https://pokeapi.co/api/v2/pokemon/' + newURL)
     .then((res) => {
 
       let userPokemonStatsTotal = 0;
@@ -50,7 +52,7 @@ function PieStats() {
     .catch((err) => {
         console.log(err);
     })
-  }, [])
+  }, [newURL])
 
   // Random generated Pokemon 1
   useEffect(() => {

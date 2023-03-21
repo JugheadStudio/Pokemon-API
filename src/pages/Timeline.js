@@ -1,3 +1,6 @@
+import React from 'react';
+import { useState, useEffect } from "react";
+
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Col from 'react-bootstrap/Col';
@@ -8,7 +11,14 @@ import PokemonDetails from '../components/pokemonDetails';
 import LevelChart from '../components/levelChart';
 import SearchBar from '../components/searchBar';
 
-function Timeline() {
+const Timeline = () => {
+
+  const [dataToChild, setdataToChild] = useState('rayquaza')
+
+  const pull_pokemon_name = (data) => {
+    setdataToChild(data)
+    // console.log(dataToChild + " this is from the prop");
+  }
 
   return (
     
@@ -24,14 +34,14 @@ function Timeline() {
       <Row>
         <Col xs={12} xl={12}>
           <div className="input-box">
-          <SearchBar/>                
+          <SearchBar func={pull_pokemon_name}/>               
           </div>
         </Col>
       </Row>
 
       <Row>
         <Col xs={12} xl={8} className='d-flex'>
-          <PokemonDetails/>
+        <PokemonDetails parentToChild={dataToChild}/>
         </Col>
 
         <Col xs={12} xl={4} className='d-flex'>

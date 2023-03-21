@@ -23,7 +23,7 @@ ChartJS.register(
   PointElement 
 );
 
-function LevelChart() {
+const LevelChart = () => {
 
   const cssColorVar = getComputedStyle(document.body);
 

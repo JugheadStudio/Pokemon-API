@@ -11,16 +11,17 @@ ChartJS.register(
 	LineElement
 );
 
-const HorizontalBarStats = () => {
+const HorizontalBarStats = (props) => {
 
+	const newURL = props.parentToChild;
 	const [PokemonData, setPokemonData] = useState();
 
 	useEffect(() => {
-			axios.get("https://pokeapi.co/api/v2/pokemon/rayquaza")
+			axios.get('https://pokeapi.co/api/v2/pokemon/' + newURL)
 			.then((res) => {
 					setPokemonData(res.data)        
 			})
-	}, [])
+	}, [newURL])
 		
 		const hp = PokemonData?.stats[0].base_stat;
 		const Attack = PokemonData?.stats[1].base_stat;

@@ -19,23 +19,23 @@ import {
     Filler,
   );
 
-function RadarStats() {
+const RadarStats = (props) => {
+
+  const newURL = props.parentToChild;
 
     // PokeAPI variables =====================
 
-  const [apiData, setApiData] =useState([]);
   const [pokemonHpStat, setpokemonHpStat] = useState("")
   const [pokemonAtkStat, setpokemonAtkStat] = useState("")
   const [pokemonDefStat, setpokemonDefStat] = useState("")
   const [pokemonSpAtkStat, setpokemonSpAtkStat] = useState("")
   const [pokemonSpDefStat, setpokemonSpDefStat] = useState("")
   const [pokemonSpdStat, setpokemonSpdStat] = useState("")
-  const [pokemonURL, setPokemonURl] = useState("")
 
   // Get Pokemon data from API =====================
 
   useEffect(() => {
-      axios.get('https://pokeapi.co/api/v2/pokemon/rayquaza')
+      axios.get('https://pokeapi.co/api/v2/pokemon/' + newURL)
       .then((res) => {
         // console.log(res.data)
 
@@ -45,12 +45,11 @@ function RadarStats() {
         setpokemonSpAtkStat(res.data.stats[3].base_stat)
         setpokemonSpDefStat(res.data.stats[4].base_stat)
         setpokemonSpdStat(res.data.stats[5].base_stat)
-        setPokemonURl(res.data.species.url)
       })
       .catch((err) => {
           console.log(err);
       })
-    }, [])
+    }, [newURL])
 
     const radialData = {
       labels: ['HP', 'Attack', 'Defence', 'Speed', 'Sp. Def', 'Sp. Atk'],

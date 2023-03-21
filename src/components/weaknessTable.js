@@ -1,40 +1,68 @@
 import React from 'react';
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import Table from 'react-bootstrap/Table';
 
-function WeaknessTable() {
+const WeaknessTable = (props) => {
 
-  const [norDamage, setNormalDamage] = useState("")
-  const [firDamage, setFireDamage] = useState("")
-  const [watDamage, setWaterDamage] = useState("")
-  const [eleDamage, setElectricDamage] = useState("")
-  const [graDamage, setGrasDamage] = useState("")
-  const [iceDamage, setICeDamage] = useState("")
-  const [figDamage, setFightingDamage] = useState("")
-  const [poiDamage, setPoisonDamage] = useState("")
-  const [groDamage, setGroundDamage] = useState("")
-  const [flyDamage, setFlyingDamage] = useState("")
-  const [psyDamage, setPsychicDamage] = useState("")
-  const [bugDamage, setBugDamage] = useState("")
-  const [rocDamage, setRockDamage] = useState("")
-  const [ghoDamage, setGhostDamage] = useState("")
-  const [draDamage, setDragonDamage] = useState("")
-  const [darDamage, setDarkDamage] = useState("")
-  const [steDamage, setSteelDamage] = useState("")
-  const [faiDamage, setFairyDamage] = useState("")
+  const newURL = props.parentToChild;
+  const typeOneURL = props.typeUrlOneToChild;
+  const typeTwoURL = props.typeUrlTwoToChild;
+
+  const [damageFrom, setDamageFrom] = useState('')
+
+  const allTypes = ['normal', 'fire', 'water', 'electric', 'grass', 'ice', 'fighting', 'poison', 'ground', 'flying', 'psychic', 'bug', 'rock', 'ghost', 'dragon', 'dark', 'steel', 'fairy']
+
+  const [norDamage, setNormalDamage] = useState('')
+  const [firDamage, setFireDamage] = useState('')
+  const [watDamage, setWaterDamage] = useState('')
+  const [eleDamage, setElectricDamage] = useState('')
+  const [graDamage, setGrassDamage] = useState('')
+  const [iceDamage, setIceDamage] = useState('')
+  const [figDamage, setFightingDamage] = useState('')
+  const [poiDamage, setPoisonDamage] = useState('')
+  const [groDamage, setGroundDamage] = useState('')
+  const [flyDamage, setFlyingDamage] = useState('')
+  const [psyDamage, setPsychicDamage] = useState('')
+  const [bugDamage, setBugDamage] = useState('')
+  const [rocDamage, setRockDamage] = useState('')
+  const [ghoDamage, setGhostDamage] = useState('')
+  const [draDamage, setDragonDamage] = useState('')
+  const [darDamage, setDarkDamage] = useState('')
+  const [steDamage, setSteelDamage] = useState('')
+  const [faiDamage, setFairyDamage] = useState('')
 
   useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/type/16/')
+      
+    axios.get('https://pokeapi.co/api/v2/type/' + typeOneURL)
     .then((res) => {
-      // console.log(res.data)
+      setDamageFrom(res.data.damage_relations)
+      
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+
+    axios.get('https://pokeapi.co/api/v2/type/' + typeTwoURL)
+    .then((res) => {
+      // console.log(res.data.damage_relations.double_damage_from)
 
     })
     .catch((err) => {
         console.log(err);
     })
-  }, [])
+
+  }, [newURL, typeOneURL, typeTwoURL])
+
+  function checkDoubleDamage() {
+    // console.log(damageFrom);
+    // console.log(damageFrom?.double_damage_from);
+    // console.log(damageFrom?.half_damage_from);
+    // console.log(damageFrom?.no_damage_from);
+  }
+
+  checkDoubleDamage();
 
   return (
     <div className='rounded-container bg-dark-grey mb-12-reset'>

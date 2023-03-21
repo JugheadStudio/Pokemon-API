@@ -1,3 +1,6 @@
+import React from 'react';
+import { useState, useEffect } from "react";
+
 // Components
 import PokemonDetails from '../components/pokemonDetails';
 import RadarStats from '../components/radarStats';
@@ -10,7 +13,21 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-function Landing() {
+const Landing = () => {
+
+  const [dataToChild, setdataToChild] = useState('rayquaza')
+  const [urlOneToChild, setUrlOneToChild] = useState('16')
+  const [urlTwoToChild, setUrlTwoToChild] = useState('3')
+
+  const pull_pokemon_name = (data) => {
+    setdataToChild(data)
+    // console.log(dataToChild + " this is from the prop");
+  }
+
+  const pull_pokemon_type_url = (url1, url2) => {
+    setUrlOneToChild(url1)
+    setUrlTwoToChild(url2)
+  }
 
   return (
 
@@ -34,17 +51,17 @@ function Landing() {
         </Col>
       </Row>
 
-      <SearchBar/>
+      <SearchBar func={pull_pokemon_name}/>
 
       <Row className="">
         <Col xs={12} xl={6} xxl={8} className='d-flex'>
-          <PokemonDetails/>
+          <PokemonDetails parentToChild={dataToChild} func={pull_pokemon_type_url}/>
         </Col>
 
         <Col xs={12} xl={6} xxl={4} className='d-flex'>
           <div className='rounded-container bg-mid-grey'>
             <h3 className='bold mb-15 text-center'>Stats Chart</h3>
-            <RadarStats/>
+            <RadarStats parentToChild={dataToChild}/>
           </div>
         </Col>
       </Row>
@@ -55,13 +72,13 @@ function Landing() {
             <h3 className='bold mb-15 text-center'>Pokemon Stats</h3>
             <p className='mb-15 text-center'>Below is a breakdown of the selected Pokemon's stats.</p>
             <div className='chart-wrapper'>
-              <HorizontalBarStats/>
+              <HorizontalBarStats parentToChild={dataToChild}/>
             </div>
           </div>
         </Col>
 
         <Col xs={12} md={6} xl={6} className='d-flex'>
-          <WeaknessTable/>
+          <WeaknessTable  parentToChild={dataToChild} typeUrlOneToChild={urlOneToChild} typeUrlTwoToChild={urlTwoToChild}/>
         </Col>
       </Row>
 
