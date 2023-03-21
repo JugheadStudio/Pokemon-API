@@ -55,7 +55,7 @@ const WeaknessTable = ({ typeUrlOneToChild, typeUrlTwoToChild }) => {
     if (!damageRelations) return []; // Add a check for null damageRelations
     const multipliers = allTypes.map((type) => {
       const damageRelationsType = damageRelations[type];
-      console.log(type, damageRelationsType);
+      // console.log(type, damageRelationsType);
       let damageMultiplier = '';
       if (damageRelationsType) {
         if (damageRelationsType.double_damage_from.length > 0) {

@@ -3,13 +3,21 @@ import { useState, useEffect } from "react";
 
 // Pokemon data
 import { getPokemonData } from '../PokemonData';
+import { getPokemonData2 } from '../PokemonData2';
 
 // Components
+import SearchBar from '../components/searchBar';
 import PokemonDetails from '../components/pokemonDetails';
 import RadarStats from '../components/radarStats';
 import HorizontalBarStats from '../components/horizontalBarStats';
 import PieStats from '../components/pieStats';
-import SearchBar from '../components/searchBar';
+
+// Comparison Components
+import SearchBarCompare from '../components/searchBarCompare';
+import PokemonDetails2 from '../components/pokemonDetails2';
+import HorizontalBarStatsCompare from '../components/horizontalBarStatsCompare';
+import RadarStatsCompare from '../components/radarStatsCompare'
+import PieStatsCompare from '../components/pieStatsCompare';
 
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -23,14 +31,26 @@ const Compare = () => {
     // console.log(newPokemonNameFromSearch + " this is from the prop");
   }
 
+  const pull_pokemon_name_2 = (pokemonNameChosenFromSearch2) => {
+    setNewPokemonNameFromSearch2(pokemonNameChosenFromSearch2)
+    // console.log(newPokemonNameFromSearch + " this is from the prop");
+  }
+
   const [pokemonData, setPokemonData] = useState(null);
+  const [pokemonData2, setPokemonData2] = useState(null);
   const [newPokemonNameFromSearch, setNewPokemonNameFromSearch] = useState('rayquaza')
+  const [newPokemonNameFromSearch2, setNewPokemonNameFromSearch2] = useState('charizard')
 
   useEffect(() => {
     getPokemonData(newPokemonNameFromSearch).then(data => setPokemonData(data));
-  }, [newPokemonNameFromSearch]);
+    getPokemonData2(newPokemonNameFromSearch2).then(data2 => setPokemonData2(data2));
+  }, [newPokemonNameFromSearch, newPokemonNameFromSearch2]);
 
   if (!pokemonData) {
+    return <p>Loading...</p>;
+  }
+
+  if (!pokemonData2) {
     return <p>Loading...</p>;
   }
 
@@ -59,8 +79,8 @@ const Compare = () => {
 
         <Col xs={12} xl={6}>
           <h2 className="mb-15 bold text-center">Pokemon 2</h2>          
-          <SearchBar func={pull_pokemon_name}/>     
-          <PokemonDetails pokemonData={pokemonData}/>
+          <SearchBarCompare func={pull_pokemon_name_2}/>     
+          <PokemonDetails2 pokemonData={pokemonData2}/>
         </Col>
       </Row>
 
@@ -81,7 +101,7 @@ const Compare = () => {
             <h3 className='bold mb-15'>Pokemon 2 Stats Overview</h3>
             <div className='w-100 text-center '>
               <div className='radar-size m-auto'>
-                <RadarStats pokemonData={pokemonData}/>
+                <RadarStatsCompare pokemonData={pokemonData2}/>
               </div>
             </div>
           </div>
@@ -105,7 +125,7 @@ const Compare = () => {
             <h3 className='bold mb-15'>Pokemon 2 Base Stats</h3>
             <div className='w-100 text-center '>
               <div className='w-75 m-auto chart-wrapper '>
-                <HorizontalBarStats pokemonData={pokemonData}/>
+                <HorizontalBarStatsCompare pokemonData={pokemonData2}/>
               </div>
             </div>
           </div>
@@ -118,7 +138,7 @@ const Compare = () => {
         </Col>
 
         <Col xs={12} xl={6}>
-          <PieStats pokemonData={pokemonData}/>
+          <PieStatsCompare pokemonData={pokemonData2}/>
         </Col>
       </Row>
 

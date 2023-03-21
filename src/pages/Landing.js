@@ -10,6 +10,7 @@ import RadarStats from '../components/radarStats';
 import HorizontalBarStats from '../components/horizontalBarStats';
 import WeaknessTable from '../components/weaknessTable';
 import SearchBar from '../components/searchBar';
+import LevelChart from '../components/levelChart';
 
 // Bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -86,7 +87,13 @@ const Landing = () => {
         </Col>
 
         <Col xs={12} md={6} xl={6} className='d-flex'>
-          {/* <WeaknessTable  parentToChild={newPokemonNameFromSearch} typeUrlOneToChild={pokemonData} typeUrlTwoToChild={pokemonData}/> */}
+          <WeaknessTable  parentToChild={newPokemonNameFromSearch} typeUrlOneToChild={pokemonData} typeUrlTwoToChild={pokemonData}/>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col xs={12} className='d-flex'>
+          <LevelChart pokemonData={pokemonData}/>
         </Col>
       </Row>
 

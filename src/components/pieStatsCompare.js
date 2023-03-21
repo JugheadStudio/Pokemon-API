@@ -33,7 +33,7 @@ const PieStats = (props) => {
 
   // Random generated Pokemon 1
   useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 1008))
+    axios.get('https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 1000))
     .then((res) => {
 
       let rerenderTrigger = pokemonData;
@@ -54,7 +54,7 @@ const PieStats = (props) => {
 
   // Random generated Pokemon 2
   useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 1008))
+    axios.get('https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 1000))
     .then((res) => {
 
       let rerenderTrigger = pokemonData;
@@ -75,7 +75,7 @@ const PieStats = (props) => {
 
   // Random generated Pokemon 2
   useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 1008))
+    axios.get('https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 1000))
     .then((res) => {
 
       let rerenderTrigger = pokemonData;
