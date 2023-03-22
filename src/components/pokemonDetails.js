@@ -1,6 +1,5 @@
 import React from 'react';
-import { useState, useEffect, useRef } from "react";
-import axios from 'axios';
+import { useState} from "react";
 
 // Bootstrap
 import Col from 'react-bootstrap/Col';
@@ -18,15 +17,43 @@ const PokemonDetails = (props) => {
     pokemonType = pokemonData.type[0];
   }
 
+  const [isShiny, setIsShiny] = useState(false);
+
+  const handleToggle = () => {
+    setIsShiny(!isShiny);
+  };
+
+  let pokemonSprite = ''
+
+  if (isShiny) {
+    pokemonSprite = pokemonData.officialShiny
+  } else {
+    pokemonSprite = pokemonData.officialArtwork
+  }
+
+  // console.log(isShiny);
+
   return (
     <div className='rounded-container bg-dark-grey'>
       <Row className='align-items-center'>
         <Col xs={12} md={6} lg={6} className='text-center'>
-          <img src={pokemonData.officialArtwork} className='pokemon-main-sprite' alt='' />
+          <img src={pokemonSprite} className='pokemon-main-sprite' alt='' />
         </Col>
 
         <Col xs={12} md={6} lg={6} className='xs-text-center pb-25 pt-25'>
-          <h1 className='capitalize mb-20 bold'>{pokemonData.name}</h1>
+
+          <div className='d-flex w-100'>
+            <div className='w-50'>
+              <h1 className='capitalize bold'>{pokemonData.name}</h1>
+            </div>
+            <div className='w-50 d-flex justify-content-end'>
+              <div className="form-check form-switch">
+                <input className='form-check-input' type="checkbox" role="switch" id="shinySwitch" onChange={handleToggle}/>
+                <label className="form-check-label">Shiny</label>
+              </div>
+            </div>
+          </div>
+          
           <hr/>
           <p className='mb-10 mt-20'><strong>Dex Number:</strong> {pokemonData.dexNumber}</p>
           <p className='mb-10 capitalize'><strong>Type:</strong> {pokemonType}</p>

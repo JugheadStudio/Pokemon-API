@@ -30,6 +30,14 @@
   max-height: 500px;
 }
 
+.form-check-input {
+  font-size: 20px;
+}
+
+.form-check-label {
+  margin-top: 5px;
+}
+
 /* Search Box ================== */
 
 #searchBarTable {
@@ -38,10 +46,18 @@
   width: 100%;
 }
 
+#searchBarTable tr {
+  cursor: pointer;
+}
+
 #searchBarTable2 {
   background-color: var(--dark-grey);
   position: absolute;
   width: 100%;
+}
+
+#searchBarTable2 tr {
+  cursor: pointer;
 }
 
 .search-bar{

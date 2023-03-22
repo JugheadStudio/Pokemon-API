@@ -11,6 +11,7 @@ export const getPokemonData = async (pokemonName) => {
       name: pokemon.name,
       sprites: pokemon.sprites,
       officialArtwork: pokemon.sprites.other['official-artwork'].front_default,
+      officialShiny: pokemon.sprites.other['official-artwork'].front_shiny,
       type: pokemon.types.map(type => type.type.name),
       typeUrls: pokemon.types.map(type => type.type.url),
       dexNumber: pokemon.id,
@@ -36,7 +37,6 @@ export const getPokemonData = async (pokemonName) => {
 
     const genusResponse = await axios.get(pokemon.species.url);
     data.species = genusResponse.data.genera[7].genus;
-
     return data;
   } catch (error) {
     console.error(error);
