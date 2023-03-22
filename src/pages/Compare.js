@@ -38,8 +38,8 @@ const Compare = () => {
 
   const [pokemonData, setPokemonData] = useState(null);
   const [pokemonData2, setPokemonData2] = useState(null);
-  const [newPokemonNameFromSearch, setNewPokemonNameFromSearch] = useState('rayquaza')
-  const [newPokemonNameFromSearch2, setNewPokemonNameFromSearch2] = useState('charizard')
+  const [newPokemonNameFromSearch, setNewPokemonNameFromSearch] = useState(Math.floor(Math.random() * 1008))
+  const [newPokemonNameFromSearch2, setNewPokemonNameFromSearch2] = useState(Math.floor(Math.random() * 1008))
 
   useEffect(() => {
     getPokemonData(newPokemonNameFromSearch).then(data => setPokemonData(data));
@@ -143,8 +143,7 @@ const Compare = () => {
       </Row>
 
     </Col>
-
-
+    
   );
 }
 

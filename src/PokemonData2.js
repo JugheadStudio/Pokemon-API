@@ -36,8 +36,7 @@ export const getPokemonData2 = async (pokemonName2) => {
     data2.growthRateUrl = growthRateUrlResponse.data.growth_rate.url;
 
     const genusResponse = await axios.get(pokemon.species.url);
-    data2.species = genusResponse.data.genera[7].genus;
-
+    data2.species = genusResponse.data.genera[7] ? genusResponse.data.genera[7].genus : 'no species defined'; 
     return data2;
   } catch (error) {
     console.error(error);

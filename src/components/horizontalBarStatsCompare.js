@@ -1,5 +1,4 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { BarElement, CategoryScale, Chart as ChartJS, LinearScale, LineElement } from 'chart.js';
 import { Bar } from 'react-chartjs-2';

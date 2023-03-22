@@ -22,7 +22,7 @@ const Timeline = () => {
   }
 
   const [pokemonData, setPokemonData] = useState(null);
-  const [newPokemonNameFromSearch, setNewPokemonNameFromSearch] = useState('rayquaza')
+  const [newPokemonNameFromSearch, setNewPokemonNameFromSearch] = useState(Math.floor(Math.random() * 1008))
 
   useEffect(() => {
     getPokemonData(newPokemonNameFromSearch).then(data => setPokemonData(data));

@@ -1,10 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import axios from "axios";
-
-// Pokemon data
-import { getPokemonData } from '../PokemonData';
-
 // Bootstrap
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
