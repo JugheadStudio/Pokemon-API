@@ -31,6 +31,9 @@ const PokemonDetails = (props) => {
     pokemonSprite = pokemonData.officialArtwork
   }
 
+  const nameParts = pokemonData.name.split('-'); // Split the name by hyphen
+  const pokemonName = nameParts[0]; // Get the first part of the name
+
 
   return (
     <div className='rounded-container bg-dark-grey'>
@@ -43,7 +46,7 @@ const PokemonDetails = (props) => {
           
           <div className='d-flex w-100'>
             <div className='w-50'>
-              <h1 className='capitalize bold'>{pokemonData.name}</h1>
+              <h1 className='capitalize bold'>{pokemonName}</h1>
             </div>
             <div className='w-50 d-flex justify-content-end'>
               <div className="form-check form-switch">

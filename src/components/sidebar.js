@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col';
 
 function Sidebar() {
   return (
-    <Col id="sidebar" className='d-sidebar'>
+    <Col xs={2} id="sidebar" className='d-sidebar'>
       <div className='pt-12 pb-12 vh-calc'>
         <div className='vh-calc sidebar-container'>
 

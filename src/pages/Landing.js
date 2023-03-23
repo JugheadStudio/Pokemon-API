@@ -39,10 +39,10 @@ const Landing = () => {
 
   return (
 
-    <Col xs={12} md={6} xl={10}>
+    <Col xs={12} xl={10}>
       {/* API info ===================== */}
       <Row className=''>
-        <Col xs={12} md={6} xl={12} className='pt-12'>
+        <Col xs={12} className='pt-12'>
           <div className='top-info-bar xs-text-center'>
             <h1 className="mb-15 bold">About the API</h1>
             <p className="mb-10">Below you will find data pulled from the PokeAPI that are being used to create informative charts that display various aspects of the Pokemon universe.</p>
@@ -52,7 +52,7 @@ const Landing = () => {
       </Row>
 
       <Row className='mb-12'>
-        <Col xs={12} md={6} xl={12}>
+        <Col xs={12}>
           <div>
             <h2 className="bold xs-text-center">Pokemon Data</h2>
           </div>
@@ -62,11 +62,11 @@ const Landing = () => {
       <SearchBar func={pull_pokemon_name}/>
 
       <Row className="">
-        <Col xs={12} xl={6} xxl={8} className='d-flex'>
+        <Col xs={12} md={6} xl={6} xxl={8} className='d-flex'>
           <PokemonDetails pokemonData={pokemonData}/>
         </Col>
 
-        <Col xs={12} xl={6} xxl={4} className='d-flex'>
+        <Col xs={12} md={6} xl={6} xxl={4} className='d-flex'>
           <div className='rounded-container bg-mid-grey'>
             <h3 className='bold mb-15 text-center'>Stats Chart</h3>
             <RadarStats pokemonData={pokemonData}/>
@@ -75,8 +75,8 @@ const Landing = () => {
       </Row>
 
       <Row>
-        <Col xs={12} md={6} xl={6} className='d-flex '>
-          <div className='rounded-container bg-dark-grey mb-12-reset'>
+        <Col xs={12} md={6} xl={6} className='d-flex'>
+          <div className='rounded-container bg-dark-grey'>
             <h3 className='bold mb-15 text-center'>Pokemon Stats</h3>
             <p className='mb-15 text-center'>Below is a breakdown of the selected Pokemon's stats.</p>
             <div className='chart-wrapper'>
@@ -86,13 +86,17 @@ const Landing = () => {
         </Col>
 
         <Col xs={12} md={6} xl={6} className='d-flex'>
-          <WeaknessTable  parentToChild={newPokemonNameFromSearch} typeUrlOneToChild={pokemonData} typeUrlTwoToChild={pokemonData}/>
+          <WeaknessTable parentToChild={newPokemonNameFromSearch} typeUrlOneToChild={pokemonData} typeUrlTwoToChild={pokemonData}/>
         </Col>
       </Row>
 
       <Row>
         <Col xs={12} className='d-flex'>
-          <LevelChart pokemonData={pokemonData}/>
+          <div className='rounded-container bg-dark-grey mb-12-reset'>
+            <h3 className='bold mb-15 text-center'>Growth Rate</h3>
+            <p className='mb-15 text-center'>Below you will find a line chart that shows how much experience this pokemon needs to level up.</p>
+            <LevelChart pokemonData={pokemonData}/>
+          </div>
         </Col>
       </Row>
 

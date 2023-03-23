@@ -1,79 +1,115 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-const SearchBar = (props) => {
-  // state to store all pokemon and the pokemon that match the user search input
+const SearchBar = ({ func }) => {
   const [allPokemon, setAllPokemon] = useState([]);
-  const [filteredPokemon, setFilteredPokemon] = useState([]);
-  // state to store user search input
+  const [filteredPokemon, setFilteredPokemon] = useState(null);
   const [userSearchInput, setUserSearchInput] = useState('');
 
-  // fetch all pokemon names from PokeAPI on component mount
   useEffect(() => {
-    axios.get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1008')
-      .then((res) => {
-        // extract pokemon names from response data and set allPokemon state
-        const names = res.data.results.map((result) => result.name);
+    const fetchPokemonNames = async () => {
+      try {
+        const response = await axios.get(
+          'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1008'
+        );
+        const names = response.data.results.map((result) => result.name);
         setAllPokemon(names);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchPokemonNames();
   }, []);
 
-  // filter allPokemon whenever userSearchInput changes
   useEffect(() => {
-    filterThroughResults(userSearchInput);
-  }, [userSearchInput]);
+    if (userSearchInput.length > 0) {
+      const filterResults = async (input) => {
+        const filtered = allPokemon.filter((name) =>
+          input.split(' ').every((word) => name.includes(word.toLowerCase()))
+        );
+        
+        if (filtered.length === 0) {
+          setFilteredPokemon([{ name: "No pokemon with that name", types: [], dexNumber: null }]);
+        } else {
+          const results = await Promise.all(filtered.slice(0, 5).map(async (name) => {
+            const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
+            const types = response.data.types.map((pokemonType) => pokemonType.type.name);
+            const dexNumber = response.data.id;
+            const displayName = name.split("-")[0]; // get everything before the hyphen
+            return { name, displayName, types, dexNumber };
+          }));
+          
+          setFilteredPokemon(results);
+        }
+      };
 
-  // function to filter allPokemon based on user search input
-  const filterThroughResults = useCallback((input) => {
-    const filtered = allPokemon.filter((name) =>
-      // split user input by spaces and check that every word appears in the pokemon name
-      input.split(' ').every((word) => name.includes(word.toLowerCase()))
-    );
-    // set filteredPokemon state to first 5 matches
-    setFilteredPokemon(filtered.slice(0, 5));
-  }, [allPokemon]);
+      filterResults(userSearchInput);
+    } else {
+      setFilteredPokemon(null);
+    }
+  }, [allPokemon, userSearchInput]);
 
-  // function to update parent state with selected pokemon and clear filteredPokemon state
-  const updatePokemonChosenFromSearch = useCallback((e) => {
-    props.func(e.target.innerHTML);
-    setFilteredPokemon([]);
-  }, [props]);
-
-  // function to update userSearchInput state when user types in search bar
-  const handleUserInput = (event) => {
+  const handleUserInput = useCallback((event) => {
     setUserSearchInput(event.target.value);
-  };
+  }, []);
 
-  // JSX to render search results table
-  const searchResults = (
-    <table id="searchBarTable">
-      <tbody>
-        {filteredPokemon.map((name) => (
-          <tr key={name} onClick={updatePokemonChosenFromSearch}>
-            <td value={name}>{name}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+  const updatePokemonChosenFromSearch = useCallback(
+    (name) => {
+      func(name);
+      setFilteredPokemon(null);
+    },
+    [func]
   );
+
+  const searchResults =
+  filteredPokemon && filteredPokemon.length > 0 &&
+  filteredPokemon.map(({ name, displayName, types, dexNumber }) => (
+    <Row key={name} onClick={() => updatePokemonChosenFromSearch(name)}>
+      {name !== "No pokemon with that name" ? (
+        <>
+          <Col xs={2} lg={2}>
+            <img
+              alt={`${name} sprite`}
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+                allPokemon.indexOf(name) + 1
+              }.png`}
+            />
+          </Col>
+          <Col xs={2} lg={1} className="text-center">
+            {dexNumber}
+          </Col>
+          <Col xs={3} lg={5} className="text-center">
+            {displayName}
+          </Col>
+          <Col xs={5} lg={4} className="text-center">
+            {types.map((type) => (
+              <span key={type} className={`pokemon-type ${type}`}>
+                {type}
+              </span>
+            ))}
+          </Col>
+        </>
+      ) : (
+        <Col xs={12} lg={12} className="text-center">
+          {name}
+        </Col>
+      )}
+    </Row>
+  ));
 
   return (
     <Row>
-      <Col xs={12} md={6} xl={12}>
+      <Col xs={12} xl={12}>
         <div className="input-box">
-          <input
-            type="text"
-            className="search-bar"
-            placeholder="Type Pokemon name"
-            value={userSearchInput}
-            onChange={handleUserInput}
-          />
-          {filteredPokemon.length > 0 && searchResults}
+          <input type="text" className={`search-bar ${userSearchInput && 'has-value'}`} placeholder="Search for Pokemon" value={userSearchInput} onChange={handleUserInput}/>
+          {searchResults !== null && (
+            <div id="searchResults" className="searchBarResults">
+              {searchResults}
+            </div>
+          )}
         </div>
       </Col>
     </Row>

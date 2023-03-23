@@ -11,6 +11,7 @@
 
   .sidebar-container {
     background-color: var(--dark-grey);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
     position: relative;
     text-align: center;

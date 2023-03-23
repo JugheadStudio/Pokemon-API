@@ -64,13 +64,21 @@ const Timeline = () => {
 
       <Row>
         <Col xs={12} xl={12} className='d-flex'>
-          <LevelChart pokemonData={pokemonData}/>
+          <div className='rounded-container bg-dark-grey'>
+            <h3 className='bold mb-15 text-center'>Growth Rate</h3>
+            <p className='mb-15 text-center'>Below you will find a line chart that shows how much experience this pokemon needs to level up.</p>
+            <LevelChart pokemonData={pokemonData}/>
+          </div>
         </Col>
       </Row>
 
       <Row>
         <Col xs={12} xl={12} className='d-flex'>
-          <LevelChart pokemonData={pokemonData}/>
+          <div className='rounded-container bg-dark-grey mb-12-reset'>
+            <h3 className='bold mb-15 text-center'>Growth Rate</h3>
+            <p className='mb-15 text-center'>Below you will find a line chart that shows how much experience this pokemon needs to level up.</p>
+            <LevelChart pokemonData={pokemonData}/>
+          </div>
         </Col>
       </Row>
 

@@ -69,32 +69,28 @@ const LevelChart = (props) => {
 
   return (
 
-    <div className='rounded-container bg-dark-grey'>
-      <h3 className='bold mb-15 text-center'>Growth Rate</h3>
-      <p className='mb-15 text-center'>Below you will find a line chart that shows how much experience this pokemon needs to level up.</p>
-      <div className='line-chart-wrapper'>
-        <Line data={levelData} options={{
-          maintainAspectRatio: false,
-          scales: {
-            y: {
-              grid: {
-                color: cssColorVar.getPropertyValue('--mid-grey')
-              },
-              ticks: {
-                color: '#d4d8e3',
-              },
-            },
-            x: {
-              grid: {
-                color: cssColorVar.getPropertyValue('--mid-grey')
-              },
-              ticks: {
-                color: '#d4d8e3',
-              },
-            }
-          }
-        }}/>
-      </div>
+    <div className='line-chart-wrapper'>
+    <Line data={levelData} options={{
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          grid: {
+            color: cssColorVar.getPropertyValue('--mid-grey')
+          },
+          ticks: {
+            color: '#d4d8e3',
+          },
+        },
+        x: {
+          grid: {
+            color: cssColorVar.getPropertyValue('--mid-grey')
+          },
+          ticks: {
+            color: '#d4d8e3',
+          },
+        }
+      }
+    }}/>
     </div>
 
   )

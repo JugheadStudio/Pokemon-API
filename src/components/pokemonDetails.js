@@ -7,7 +7,7 @@ import Row from 'react-bootstrap/Row';
 
 const PokemonDetails = (props) => {
 
-  const pokemonData = props.pokemonData
+  const pokemonData = props.pokemonData;
     
   let pokemonType = '';
 
@@ -23,13 +23,16 @@ const PokemonDetails = (props) => {
     setIsShiny(!isShiny);
   };
 
-  let pokemonSprite = ''
+  let pokemonSprite = '';
 
   if (isShiny) {
-    pokemonSprite = pokemonData.officialShiny
+    pokemonSprite = pokemonData.officialShiny;
   } else {
-    pokemonSprite = pokemonData.officialArtwork
+    pokemonSprite = pokemonData.officialArtwork;
   }
+
+  const nameParts = pokemonData.name.split('-'); // Split the name by hyphen
+  const pokemonName = nameParts[0]; // Get the first part of the name
 
   // console.log(isShiny);
 
@@ -44,7 +47,7 @@ const PokemonDetails = (props) => {
 
           <div className='d-flex w-100'>
             <div className='w-50'>
-              <h1 className='capitalize bold'>{pokemonData.name}</h1>
+              <h1 className='capitalize bold'>{pokemonName}</h1>
             </div>
             <div className='w-50 d-flex justify-content-end'>
               <div className="form-check form-switch">
@@ -66,4 +69,4 @@ const PokemonDetails = (props) => {
   )
 }
   
-  export default PokemonDetails;
+export default PokemonDetails;
