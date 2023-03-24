@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Accordion from 'react-bootstrap/Accordion';
 
 // Pokemon data
 import { getPokemonData } from '../PokemonData';
@@ -18,7 +19,6 @@ const Timeline = () => {
 
   const pull_pokemon_name = (pokemonNameChosenFromSearch) => {
     setNewPokemonNameFromSearch(pokemonNameChosenFromSearch)
-    // console.log(newPokemonNameFromSearch + " this is from the prop");
   }
 
   const [pokemonData, setPokemonData] = useState(null);
@@ -31,14 +31,19 @@ const Timeline = () => {
   if (!pokemonData) {
     return <p>Loading...</p>;
   }
+  
   return (
-    
     <Col xs={12} xl={10}>
       <Row>
       <Col xs={12} xl={12} className='pt-12'>
-          <div className='top-info-bar xs={12} xs-text-center'>
-            <h1 className="bold">Timeline</h1>
-          </div>
+        <Accordion defaultActiveKey="0">
+          <Accordion.Item eventKey="1" className='xs-text-center'>
+            <Accordion.Header>Timeline</Accordion.Header>
+              <Accordion.Body>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati vel porro deleniti, fuga ipsum illo? Hic voluptatem eius, voluptatum veniam minus officiis iusto quisquam vel possimus, itaque sed deserunt distinctio.</p>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
         </Col>
       </Row>
 
@@ -58,6 +63,33 @@ const Timeline = () => {
         <Col xs={12} xl={4} className='d-flex'>
           <div className='rounded-container bg-mid-grey'>
             <h3 className='bold mb-15 text-center'>Evolution</h3>
+            <p className='text-center mb-25'>Click on the evolution sprites to load Pokemon detials.</p>
+            <div className='evolutionContainer'>
+
+              <Row>
+                <Col xs={6}><p><strong>Evolves From</strong></p></Col>
+                <Col xs={6}><p><strong>Evolves Into</strong></p></Col>
+              </Row>
+
+              <Row>
+                <Col xs={6}>
+                  {pokemonData.evolvesFrom.spriteUrl && pokemonData.evolvesFrom.spriteUrl !== 'null' && pokemonData.evolvesFrom.spriteUrl !== 'https://pokeapi.co/api/v2/pokemon/undefined' &&
+                    <img src={pokemonData.evolvesFrom.spriteUrl} alt="" onClick={() => setNewPokemonNameFromSearch(pokemonData.evolvesFrom.name)}/>
+                  }
+                </Col>
+                <Col xs={6}>
+                  {pokemonData.evolvesTo.spriteUrl && pokemonData.evolvesTo.spriteUrl !== 'null' && pokemonData.evolvesTo.spriteUrl !== 'https://pokeapi.co/api/v2/pokemon/undefined' &&
+                    <img src={pokemonData.evolvesTo.spriteUrl} alt="" onClick={() => setNewPokemonNameFromSearch(pokemonData.evolvesTo.name)}/>
+                  }
+                </Col>
+              </Row>
+
+              <Row>
+                <Col xs={6}><p>{pokemonData.evolvesFrom.name}</p></Col>
+                <Col xs={6}><p>{pokemonData.evolvesTo.name}</p></Col>
+              </Row>
+
+            </div>
           </div>
         </Col>
       </Row>

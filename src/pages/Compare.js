@@ -1,6 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 
+// Bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Accordion from 'react-bootstrap/Accordion';
+
 // Pokemon data
 import { getPokemonData } from '../PokemonData';
 import { getPokemonData2 } from '../PokemonData2';
@@ -19,10 +25,6 @@ import HorizontalBarStatsCompare from '../components/horizontalBarStatsCompare';
 import RadarStatsCompare from '../components/radarStatsCompare'
 import PieStatsCompare from '../components/pieStatsCompare';
 
-// Bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css'
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 
 const Compare = () => {
 
@@ -62,11 +64,15 @@ const Compare = () => {
       {/* API info ===================== */}
       <Row>
         <Col xs={12} xl={12} className='pt-12'>
-          <div className='top-info-bar xs-text-center'>
-            <h1 className="mb-15 bold">Pokemon Comparison</h1>
-            <p className="mb-10">Comparing Pokemon stats and abilities can be a valuable tool for trainers looking to build powerful teams. By using data and charts, we can gain a deeper understanding of the unique strengths and weaknesses of each Pokemon.</p>
-            <p>One way to compare Pokemon stats is by using a radar chart, which displays a Pokemon's base stats in categories such as Attack, Defense, Speed, Special Attack, Special Defense, and HP. This chart allows us to quickly see how a Pokemon stacks up against others in different categories and can help trainers decide which Pokemon to add to their team based on their desired attributes.</p>
-          </div>
+          <Accordion defaultActiveKey="0">
+            <Accordion.Item eventKey="1" className='xs-text-center'>
+              <Accordion.Header>Pokemon Comparison</Accordion.Header>
+              <Accordion.Body>
+                <p>Comparing Pokemon stats and abilities can be a valuable tool for trainers looking to build powerful teams. By using data and charts, we can gain a deeper understanding of the unique strengths and weaknesses of each Pokemon.</p>
+                <p>One way to compare Pokemon stats is by using a radar chart, which displays a Pokemon's base stats in categories such as Attack, Defense, Speed, Special Attack, Special Defense, and HP. This chart allows us to quickly see how a Pokemon stacks up against others in different categories and can help trainers decide which Pokemon to add to their team based on their desired attributes.</p>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
         </Col>
       </Row>
 

@@ -1,30 +1,28 @@
 :root {
-    --primary: #4192fe;
+	--primary: #4192fe;
 
-    --bg-grey:#26292e;
+	--bg-grey:#26292e;
 
-    --dark-grey:#1e1f24;
-    --mid-grey:#2f333e;
-    --light-grey:#d4d8e3;
+	--dark-grey:#1e1f24;
+	--mid-grey:#2f333e;
+	--light-grey:#d4d8e3;
 
-    --nav-hover:#242730;
+	--nav-hover:#242730;
 
-    --text-white:#d4d8e3;
+	--text-white:#d4d8e3;
 
-    --chart1: #D6FF29;
-    --chart2: #4192fe;
-    --chart3: #73c0ff;
-    --chart4: #b1f3ff;
-
-
+	--chart1: #D6FF29;
+	--chart2: #4192fe;
+	--chart3: #73c0ff;
+	--chart4: #b1f3ff;
 }
 
 .bg-dark-grey {
-    background-color: var(--dark-grey);
+	background-color: var(--dark-grey);
 }
 
 .bg-mid-grey {
-    background-color: var(--mid-grey);
+	background-color: var(--mid-grey);
 }
 
 /* Type Colors */

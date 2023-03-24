@@ -37,8 +37,8 @@ const SearchBar = ({ func }) => {
           const results = await Promise.all(filtered.slice(0, 5).map(async (name) => {
             const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
             const types = response.data.types.map((pokemonType) => pokemonType.type.name);
-            const dexNumber = response.data.id;
-            const displayName = name.split("-")[0]; // get everything before the hyphen
+            const dexNumber = response.data.id;            
+            const displayName = name; // get everything before the hyphen
             return { name, displayName, types, dexNumber };
           }));
           
@@ -70,6 +70,9 @@ const SearchBar = ({ func }) => {
     <Row key={name} onClick={() => updatePokemonChosenFromSearch(name)}>
       {name !== "No pokemon with that name" ? (
         <>
+          <Col xs={2} lg={1} className="text-center">
+            {dexNumber}
+          </Col>
           <Col xs={2} lg={2}>
             <img
               alt={`${name} sprite`}
@@ -77,9 +80,6 @@ const SearchBar = ({ func }) => {
                 allPokemon.indexOf(name) + 1
               }.png`}
             />
-          </Col>
-          <Col xs={2} lg={1} className="text-center">
-            {dexNumber}
           </Col>
           <Col xs={3} lg={5} className="text-center">
             {displayName}

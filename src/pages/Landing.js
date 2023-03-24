@@ -1,6 +1,12 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 
+// Bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Accordion from 'react-bootstrap/Accordion';
+
 // Pokemon data
 import { getPokemonData } from '../PokemonData';
 
@@ -12,10 +18,6 @@ import WeaknessTable from '../components/weaknessTable';
 import SearchBar from '../components/searchBar';
 import LevelChart from '../components/levelChart';
 
-// Bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css'
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 
 const Landing = () => {
 
@@ -43,11 +45,21 @@ const Landing = () => {
       {/* API info ===================== */}
       <Row className=''>
         <Col xs={12} className='pt-12'>
-          <div className='top-info-bar xs-text-center'>
+          {/* <div className='top-info-bar xs-text-center'>
             <h1 className="mb-15 bold">About the API</h1>
             <p className="mb-10">Below you will find data pulled from the PokeAPI that are being used to create informative charts that display various aspects of the Pokemon universe.</p>
             <p>The PokeAPI provides a wealth of information about different Pokemon species, including their names, types, abilities, stats, and more. By leveraging this data, you will be able to see all the relevant data for any Pokemon at a glance and use it to your advantage.</p>
-          </div>
+          </div> */}
+
+          <Accordion defaultActiveKey="0">
+            <Accordion.Item eventKey="1" className='xs-text-center'>
+              <Accordion.Header>About the API</Accordion.Header>
+              <Accordion.Body>
+                <p>Below you will find data pulled from the PokeAPI that are being used to create informative charts that display various aspects of the Pokemon universe.</p>
+                <p>The PokeAPI provides a wealth of information about different Pokemon species, including their names, types, abilities, stats, and more. By leveraging this data, you will be able to see all the relevant data for any Pokemon at a glance and use it to your advantage.</p>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
         </Col>
       </Row>
 

@@ -8,6 +8,35 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
 }
 
+.accordion {
+  --bs-accordion-color: var(--text-white) !important;
+  --bs-accordion-bg: var(--primary) !important;
+  --bs-accordion-border-width: none !important;
+  border-radius: 15px !important;
+  --bs-accordion-btn-color: var(--text-white) !important;
+  --bs-accordion-btn-focus-border-color: none !important;
+  --bs-accordion-btn-focus-box-shadow: none !important;
+  --bs-accordion-active-color: none !important;
+  --bs-accordion-active-bg: var(--primary) !important;
+  margin-bottom: 25px;
+}
+
+.accordion-body {
+  padding-top: 0 !important;
+}
+
+.accordion-item {
+  border-radius: 15px !important;
+}
+
+.accordion-button {
+  border-radius: 15px !important;
+}
+
+.accordion-button:after {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23d4d8e3'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+}
+
 .rounded-container {
   border-radius: 15px;
   padding: 15px 25px;
@@ -72,7 +101,6 @@ outline: 0;
   background-color: var(--dark-grey);
   position: absolute;
   width: 100%;
-  padding: 0 25px;
   overflow: hidden;
   border-radius: 15px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
@@ -89,6 +117,7 @@ outline: 0;
 
 .searchBarResults .row {
   cursor: pointer;
+  padding: 0 25px;
   height: 60px;
   vertical-align: middle;
 }
@@ -120,7 +149,7 @@ outline: 0;
 .pokemon-type {
   border-radius: 10px;
   padding: 2px 10px;
-  margin-right: 10px !important;
+  margin: 0 5px !important;
   text-shadow:1px 1px 5px #000000;
   font-size: 0.75rem;
 }
@@ -202,5 +231,43 @@ td {
 /* Seachbar */
 
 #seachBarTable tr {
+  cursor: pointer;
+}
+
+/* Evolution */
+
+.evolutionContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.evolutionContainer .row {
+  width: 100%;
+}
+
+.evolutionContainer .row div {
+  width: 50%;
+  text-align: center;
+}
+
+.evolutionContainer img {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+}
+
+.evolution {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.evolution img {
   cursor: pointer;
 }
