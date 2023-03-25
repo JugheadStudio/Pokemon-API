@@ -33,7 +33,6 @@ const PieStats = (props) => {
     axios.get('https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 1000))
     .then((res) => {
 
-      let rerenderTrigger = pokemonData;
       let RandomPokemonStatsTotal1 = 0;
 
       for ( var i = 0; i < res.data.stats.length; i++ ) {
@@ -54,7 +53,6 @@ const PieStats = (props) => {
     axios.get('https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 1000))
     .then((res) => {
 
-      let rerenderTrigger = pokemonData;
       let RandomPokemonStatsTotal2 = 0;
 
       for ( var i = 0; i < res.data.stats.length; i++ ) {
@@ -75,7 +73,6 @@ const PieStats = (props) => {
     axios.get('https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 1000))
     .then((res) => {
 
-      let rerenderTrigger = pokemonData;
       let RandomPokemonStatsTotal3 = 0;
 
       for ( var i = 0; i < res.data.stats.length; i++ ) {

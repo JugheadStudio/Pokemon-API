@@ -2,10 +2,6 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-// Bootstrap
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-
 // Chart JS =====================
 import { Line } from 'react-chartjs-2';
 import { 
