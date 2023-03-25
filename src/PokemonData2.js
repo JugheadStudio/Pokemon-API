@@ -12,8 +12,10 @@ export const getPokemonData2 = async (pokemonName2) => {
       sprites: pokemon.sprites,
       officialArtwork: pokemon.sprites.other['official-artwork'].front_default,
       officialShiny: pokemon.sprites.other['official-artwork'].front_shiny,
-      type: pokemon.types.map(type => type.type.name),
-      typeUrls: pokemon.types.map(type => type.type.url),
+      types: pokemon.types.map(type => ({
+        type: type.type.name,
+        typeUrl: type.type.url,
+      })),
       dexNumber: pokemon.id,
       height: pokemon.height / 10,
       weight: pokemon.weight / 10,

@@ -3,7 +3,7 @@ import axios from 'axios';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
-const SearchBar = ({ func }) => {
+const SearchBarCompare = ({ func }) => {
   const [allPokemon, setAllPokemon] = useState([]);
   const [filteredPokemon, setFilteredPokemon] = useState(null);
   const [userSearchInput, setUserSearchInput] = useState('');
@@ -14,8 +14,14 @@ const SearchBar = ({ func }) => {
         const response = await axios.get(
           'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1008'
         );
-        const names = response.data.results.map((result) => result.name);
-        setAllPokemon(names);
+
+        const dexEntry = response.data.results.map((result) => {
+          const dexLink = result.url;
+          const parts = dexLink.split('/');
+          const id = parts[parts.length - 2];
+          return { id, name: result.name, url: result.url };
+        });
+        setAllPokemon(dexEntry);
       } catch (error) {
         console.error(error);
       }
@@ -25,31 +31,35 @@ const SearchBar = ({ func }) => {
   }, []);
 
   useEffect(() => {
-    if (userSearchInput.length > 0) {
-      const filterResults = async (input) => {
-        const filtered = allPokemon.filter((name) =>
-          input.split(' ').every((word) => name.includes(word.toLowerCase()))
-        );
-        
+    const filterResults = async (input) => {
+      if (input === '') {
+        setFilteredPokemon(null);
+      } else {
+        const searchInput = input.toLowerCase();
+        const filtered = allPokemon.filter((pokemon) => {
+          return (
+            pokemon.name.includes(searchInput) || // check if the name includes the search input
+            pokemon.id.includes(searchInput) // check if the ID includes the search input
+          );
+        });
+
         if (filtered.length === 0) {
-          setFilteredPokemon([{ name: "No pokemon with that name", types: [], dexNumber: null }]);
+          setFilteredPokemon([{ name: "No pokemon found", types: [], dexNumber: null }]);
         } else {
-          const results = await Promise.all(filtered.slice(0, 5).map(async (name) => {
-            const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
+          const results = await Promise.all(filtered.slice(0, 5).map(async (pokemon) => {
+            const response = await axios.get(pokemon.url);
             const types = response.data.types.map((pokemonType) => pokemonType.type.name);
             const dexNumber = response.data.id;
-            const displayName = name; // get everything before the hyphen
-            return { name, displayName, types, dexNumber };
+            const displayName = pokemon.name; // get everything before the hyphen
+            return { name: pokemon.name, displayName, types, dexNumber };
           }));
-          
+
           setFilteredPokemon(results);
         }
-      };
+      }
+    };
 
-      filterResults(userSearchInput);
-    } else {
-      setFilteredPokemon(null);
-    }
+    filterResults(userSearchInput);
   }, [allPokemon, userSearchInput]);
 
   const handleUserInput = useCallback((event) => {
@@ -60,6 +70,7 @@ const SearchBar = ({ func }) => {
     (name) => {
       func(name);
       setFilteredPokemon(null);
+      setUserSearchInput('');
     },
     [func]
   );
@@ -70,16 +81,13 @@ const SearchBar = ({ func }) => {
     <Row key={name} onClick={() => updatePokemonChosenFromSearch(name)}>
       {name !== "No pokemon with that name" ? (
         <>
-          <Col xs={2} lg={2}>
-            <img
-              alt={`${name} sprite`}
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-                allPokemon.indexOf(name) + 1
-              }.png`}
-            />
-          </Col>
           <Col xs={2} lg={1} className="text-center">
             {dexNumber}
+          </Col>
+          <Col xs={2} lg={2}>
+          <img alt={`${name} sprite`}
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${dexNumber}.png`}
+          />
           </Col>
           <Col xs={3} lg={5} className="text-center">
             {displayName}
@@ -116,4 +124,4 @@ const SearchBar = ({ func }) => {
   );
 };
 
-export default SearchBar;
+export default SearchBarCompare;

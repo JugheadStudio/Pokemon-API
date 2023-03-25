@@ -39,24 +39,6 @@
     background-color: var(--nav-hover);
 }
 
-.navDisclaimer {
-    font-size: 0.6rem;
-    font-weight: 100;
-    bottom: 25px;
-    padding: 0 15px;
-    position: absolute;
-}
-
-.navDisclaimer a {
-  color: var(--primary);
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.navDisclaimer span {
-  font-weight: 700;
-}
-
 .vh-calc {
   height: calc(100vh - 25px);
   position: sticky;

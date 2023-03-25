@@ -73,20 +73,43 @@ const Timeline = () => {
 
               <Row>
                 <Col xs={6}>
-                  {pokemonData.evolvesFrom.spriteUrl && pokemonData.evolvesFrom.spriteUrl !== 'null' && pokemonData.evolvesFrom.spriteUrl !== 'https://pokeapi.co/api/v2/pokemon/undefined' &&
-                    <img src={pokemonData.evolvesFrom.spriteUrl} alt="" onClick={() => setNewPokemonNameFromSearch(pokemonData.evolvesFrom.name)}/>
-                  }
+                {pokemonData.evolutionData.evolvesFrom.spriteUrl !== 'None' && 
+                  <img className='pointer' 
+                  src={pokemonData.evolutionData.evolvesFrom.spriteUrl} 
+                  alt={pokemonData.evolutionData.evolvesFrom.name + ' sprite'} 
+                  onClick={() => setNewPokemonNameFromSearch(pokemonData.evolutionData.evolvesFrom.fullName)}/>
+                }
                 </Col>
                 <Col xs={6}>
-                  {pokemonData.evolvesTo.spriteUrl && pokemonData.evolvesTo.spriteUrl !== 'null' && pokemonData.evolvesTo.spriteUrl !== 'https://pokeapi.co/api/v2/pokemon/undefined' &&
-                    <img src={pokemonData.evolvesTo.spriteUrl} alt="" onClick={() => setNewPokemonNameFromSearch(pokemonData.evolvesTo.name)}/>
+                  {pokemonData.evolutionData.evolvesTo.spriteUrl !== 'None' && 
+                    <img className='pointer' 
+                    src={pokemonData.evolutionData.evolvesTo.spriteUrl} 
+                    alt={pokemonData.evolutionData.evolvesTo.name + ' sprite'} 
+                    onClick={() => setNewPokemonNameFromSearch(pokemonData.evolutionData.evolvesTo.fullName)}/>
                   }
                 </Col>
               </Row>
 
               <Row>
-                <Col xs={6}><p>{pokemonData.evolvesFrom.name}</p></Col>
-                <Col xs={6}><p>{pokemonData.evolvesTo.name}</p></Col>
+                <Col xs={6}>
+                  {pokemonData.evolutionData.evolvesFrom.name !== 'None' ? 
+                    <p className='pointer' onClick={() => setNewPokemonNameFromSearch(pokemonData.evolutionData.evolvesFrom.fullName)}>
+                      {pokemonData.evolutionData.evolvesFrom.name.charAt(0).toUpperCase() + pokemonData.evolutionData.evolvesFrom.name.slice(1)}
+                    </p>
+                    :
+                    <p>None</p>
+                  }
+                </Col>
+
+                <Col className='pointer' xs={6}>
+                  {pokemonData.evolutionData.evolvesTo.name !== 'None' ? 
+                    <p onClick={() => setNewPokemonNameFromSearch(pokemonData.evolutionData.evolvesTo.fullName)}>
+                      {pokemonData.evolutionData.evolvesTo.name.charAt(0).toUpperCase() + pokemonData.evolutionData.evolvesTo.name.slice(1)}
+                    </p>
+                    :
+                    <p>None</p>
+                  }
+                </Col>
               </Row>
 
             </div>
@@ -105,11 +128,14 @@ const Timeline = () => {
       </Row>
 
       <Row>
-        <Col xs={12} xl={12} className='d-flex'>
-          <div className='rounded-container bg-dark-grey mb-12-reset'>
-            <h3 className='bold mb-15 text-center'>Growth Rate</h3>
-            <p className='mb-15 text-center'>Below you will find a line chart that shows how much experience this pokemon needs to level up.</p>
-            <LevelChart pokemonData={pokemonData}/>
+        <Col xs={12} className='d-flex'>
+          <div className='disclaimer rounded-container bg-dark-grey mb-12-reset'>
+            <p>
+              Using <a href="https://pokeapi.co/">PokeAPI V2</a> | Designed by <span>Jughead Studio</span>
+              <br />
+              All content is property of &copy;Pokemon 1995-2023 Nintendo/Game Freak 
+            </p>
+
           </div>
         </Col>
       </Row>

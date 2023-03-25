@@ -7,64 +7,84 @@ import {
     PointElement,
     LineElement,
     Filler,
+    Tooltip
   } from 'chart.js';
-  import { Radar } from 'react-chartjs-2';
-  
-  ChartJS.register(
-    RadialLinearScale,
-    PointElement,
-    LineElement,
-    Filler,
-  );
+import { Radar } from 'react-chartjs-2';
+
+ChartJS.register(
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip
+);
 
 const RadarStats = (props) => {
 
   const pokemonData = props.pokemonData;
   // console.log(pokemonData.baseStats);
 
-    const radialData = {
-      labels: ['HP', 'Attack', 'Defence', 'Speed', 'Sp. Def', 'Sp. Atk'],
-      datasets: [
-        {
-          data: [pokemonData.baseStats.hp, 
-            pokemonData.baseStats.attack, 
-            pokemonData.baseStats.defense, 
-            pokemonData.baseStats.speed, 
-            pokemonData.baseStats.spDefense, 
-            pokemonData.baseStats.spAttack],
-          backgroundColor: 'rgba(54, 162, 235, 0.7)',
-          borderColor: 'rgba(255, 99, 132, 0)',
-        },
-      ],
-    };
-  
-    return (
-      <Radar 
-      options={{
-        elements: {
-          point: {
-            radius: 0,
+  const radialData = {
+    labels: ['HP', 'Attack', 'Defence', 'Speed', 'Sp. Def', 'Sp. Atk'],
+    datasets: [
+      {
+        data: [pokemonData.baseStats.hp, 
+          pokemonData.baseStats.attack, 
+          pokemonData.baseStats.defense, 
+          pokemonData.baseStats.speed, 
+          pokemonData.baseStats.spDefense, 
+          pokemonData.baseStats.spAttack],
+        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+        borderColor: 'rgba(255, 99, 132, 0)',
+        pointHoverRadius: 8,
+        pointHoverBackgroundColor: 'rgba(255, 99, 132, 1)',
+        pointHoverBorderColor: 'rgba(220,220,220,1)',
+        pointHoverBorderWidth: 2,
+        pointRadius: 4,
+        pointHitRadius: 10,
+      },
+    ],
+    options: {
+      tooltips: {
+        callbacks: {
+          label: function (tooltipItem, data) {
+            return data.labels[tooltipItem.index] + ': ' + data.datasets[0].data[tooltipItem.index];
+          },
+          afterLabel: function (tooltipItem, data) {
+            return pokemonData.baseStats[data.labels[tooltipItem.index]];
           }
         },
-        scales: {
-          r: {
-            min: 0,
-            angleLines: {
-              color: 'transparent'
-            },
-            grid: {
-              color: '#1f2025'
-            },
-            pointLabels: {
-              color: '#d4d8e3'
-            },
-            ticks: {
-              display: false
-            }
+      },
+    },
+  };
+  
+  return (
+    <Radar 
+    options={{
+      elements: {
+        point: {
+          radius: 2,
+        }
+      },
+      scales: {
+        r: {
+          min: 0,
+          angleLines: {
+            color: 'rgba(255, 255, 255, 0.1)'
+          },
+          grid: {
+            color: 'rgba(255, 255, 255, 0.1)'
+          },
+          pointLabels: {
+            color: '#d4d8e3'
+          },
+          ticks: {
+            display: false
           }
         }
-      }} data={radialData} className='m-auto'/>
-    )
-  }
-  
-  export default RadarStats;
+      }
+    }} data={radialData} className='m-auto'/>
+  )
+}
+
+export default RadarStats;

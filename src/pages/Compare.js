@@ -148,6 +148,19 @@ const Compare = () => {
         </Col>
       </Row>
 
+      <Row>
+        <Col xs={12} className='d-flex'>
+          <div className='disclaimer rounded-container bg-dark-grey mb-12-reset'>
+            <p>
+              Using <a href="https://pokeapi.co/">PokeAPI V2</a> | Designed by <span>Jughead Studio</span>
+              <br />
+              All content is property of &copy;Pokemon 1995-2023 Nintendo/Game Freak 
+            </p>
+
+          </div>
+        </Col>
+      </Row>
+
     </Col>
     
   );

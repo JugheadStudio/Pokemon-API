@@ -173,6 +173,10 @@ td {
   padding-bottom: 15px !important;
 }
 
+.weakness-item {
+  width: 11%;
+}
+
 /*================================== */
 
 /* Pie Chart ======================= */
@@ -260,6 +264,18 @@ td {
   margin: 10px;
 }
 
+.evolutionContainer img:hover {
+  transform: scale(1.1);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.pointer:hover {
+  color: var(--primary);
+}
+
 .evolution {
   display: flex;
   flex-direction: column;
@@ -270,4 +286,20 @@ td {
 
 .evolution img {
   cursor: pointer;
+}
+
+.disclaimer {
+  font-size: 0.6rem;
+  font-weight: 100;
+  text-align: center;
+}
+
+.disclaimer a {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.disclaimer span {
+  font-weight: 700;
 }

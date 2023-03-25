@@ -18,16 +18,6 @@ function Sidebar() {
           <NavLink to="/" className='navItem'>Home</NavLink>
           <NavLink to="/compare" className='navItem'>Compare</NavLink>
           <NavLink to="/timeline" className='navItem'>Timeline</NavLink>
-
-          <div className='navDisclaimer'>
-            <p>
-              All content is property of &copy;Pokemon 1995-2023 Nintendo/Game Freak 
-              <br /><br />
-              Designed by <span>Jughead Studio</span><br />
-              Using <a href="https://pokeapi.co/">PokeAPI V2</a>
-            </p>
-
-          </div>
         </div>
       </div>
     </Col>

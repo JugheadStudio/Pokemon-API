@@ -53,7 +53,7 @@ const Landing = () => {
 
           <Accordion defaultActiveKey="0">
             <Accordion.Item eventKey="1" className='xs-text-center'>
-              <Accordion.Header>About the API</Accordion.Header>
+              <Accordion.Header>About Datamon</Accordion.Header>
               <Accordion.Body>
                 <p>Below you will find data pulled from the PokeAPI that are being used to create informative charts that display various aspects of the Pokemon universe.</p>
                 <p>The PokeAPI provides a wealth of information about different Pokemon species, including their names, types, abilities, stats, and more. By leveraging this data, you will be able to see all the relevant data for any Pokemon at a glance and use it to your advantage.</p>
@@ -98,16 +98,29 @@ const Landing = () => {
         </Col>
 
         <Col xs={12} md={6} xl={6} className='d-flex'>
-          <WeaknessTable parentToChild={newPokemonNameFromSearch} typeUrlOneToChild={pokemonData} typeUrlTwoToChild={pokemonData}/>
+          <WeaknessTable pokemonData={pokemonData}/>
         </Col>
       </Row>
 
       <Row>
         <Col xs={12} className='d-flex'>
-          <div className='rounded-container bg-dark-grey mb-12-reset'>
+          <div className='rounded-container bg-dark-grey mb-25'>
             <h3 className='bold mb-15 text-center'>Growth Rate</h3>
             <p className='mb-15 text-center'>Below you will find a line chart that shows how much experience this pokemon needs to level up.</p>
             <LevelChart pokemonData={pokemonData}/>
+          </div>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col xs={12} className='d-flex'>
+          <div className='disclaimer rounded-container bg-dark-grey mb-12-reset'>
+            <p>
+              Using <a href="https://pokeapi.co/">PokeAPI V2</a> | Designed by <span>Jughead Studio</span>
+              <br />
+              All content is property of &copy;Pokemon 1995-2023 Nintendo/Game Freak 
+            </p>
+
           </div>
         </Col>
       </Row>

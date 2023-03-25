@@ -13,7 +13,7 @@ const HorizontalBarStats = (props) => {
 
 	const pokemonData = props.pokemonData;
 
-		const labels = ['HP', 'Attack', 'Defence', 'Speed', 'Sp. Def', 'Sp. Atk']
+		const labels = [ 'HP', 'Attack', 'Defence', 'Speed', 'Sp. Def', 'Sp. Atk' ]
 	
 		const data = {
 			labels,
@@ -49,36 +49,52 @@ const HorizontalBarStats = (props) => {
 
 	return (
 
-		<Bar data={data} options= {{
-			maintainAspectRatio: false,
-			indexAxis: 'y',
-			scales: {
-				y: {
-					beginAtZero: true,
-					ticks: {
-						color: '#d4d8e3',
-					},
-					grid: {
-						color: 'transparent'
-					}
-				},
-				x: {
-					ticks: {
-						color: '#d4d8e3',
-					},
-					grid: {
-						color: 'transparent'
-					}
-				}
-			},
-			elements: {
-				bar: {
-					borderRadius: 25,
-					borderSkipped: false
-				}
-			}
-		}} />
-
+		<Bar
+      data={data}
+      options={{
+        maintainAspectRatio: false,
+        indexAxis: 'y',
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: {
+              color: '#d4d8e3',
+            },
+            grid: {
+              color: 'transparent'
+            }
+          },
+          x: {
+            ticks: {
+              color: '#d4d8e3',
+            },
+            grid: {
+              color: 'transparent'
+            }
+          }
+        },
+        elements: {
+          bar: {
+            borderRadius: 25,
+            borderSkipped: false
+          }
+        },
+        plugins: {
+          datalabels: {
+            align: 'end',
+            anchor: 'end',
+            color: '#fff',
+            font: {
+              size: 14,
+              weight: 'bold'
+            },
+            formatter: function(value, context) {
+              return `${value} `;
+            }
+          }
+        }
+      }}
+    />
 	);
 };
 

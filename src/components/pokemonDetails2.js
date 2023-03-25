@@ -27,10 +27,9 @@ const PokemonDetails = (props) => {
   const pokemonName = nameParts[0]; // Get the first part of the name
 
   // Map through the types array to create a span element for each type
-  const types = pokemonData.type;
-  const pokemonType = types.map((type) => (
-    <span key={type} className={`pokemon-type ${type}`}>
-      {type}
+  const pokemonTypes = pokemonData.types.map((type) => (
+    <span key={type.type} className={`pokemon-type ${type.type}`}>
+      {type.type}
     </span>
   ));
 
@@ -59,7 +58,7 @@ const PokemonDetails = (props) => {
           
           <hr/>
           <p className='mb-10 mt-20'><strong>Dex Number:</strong> {pokemonData.dexNumber}</p>
-          <p className='capitalize mb-10'><strong>Type:</strong> {pokemonType}</p>
+          <p className='capitalize mb-10'><strong>Type:</strong> {pokemonTypes}</p>
           <p className='capitalize mb-10'><strong>Species:</strong> {pokemonData.species}</p>
           <p className='mb-10'><strong>Height:</strong> {pokemonData.height} m</p>
           <p><strong>Weight:</strong> {pokemonData.weight} kg</p>

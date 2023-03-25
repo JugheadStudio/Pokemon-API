@@ -15,6 +15,26 @@
 	--chart2: #4192fe;
 	--chart3: #73c0ff;
 	--chart4: #b1f3ff;
+
+	/* type color variables */
+	--normal: #A8A77A;
+	--fire: #ee8130;
+	--water: #6390F0;
+	--electric: #F7D02C;
+	--grass: #7AC74C;
+	--ice: #96D9D6;
+	--fighting: #C22E28;
+	--poison: #A33EA1;
+	--ground: #E2BF65;
+	--flying: #A98FF3;
+	--psychic: #F95587;
+	--bug: #A6B91A;
+	--rock: #B6A136;
+	--ghost: #735797;
+	--dragon: #6F35FC;
+	--dark: #705746;
+	--steel: #B7B7CE;
+	--fairy: #D685AD;
 }
 
 .bg-dark-grey {
@@ -26,21 +46,21 @@
 }
 
 /* Type Colors */
-.normal { background-color: #A8A77A }
-.fire { background-color: #EE8130 }
-.water { background-color: #6390F0 }
-.electric { background-color: #F7D02C }
-.grass { background-color: #7AC74C }
-.ice { background-color: #96D9D6 }
-.fighting { background-color: #C22E28 }
-.poison { background-color: #A33EA1 }
-.ground { background-color: #E2BF65 }
-.flying { background-color: #A98FF3 }
-.psychic { background-color: #F95587 }
-.bug { background-color: #A6B91A }
-.rock { background-color: #B6A136 }
-.ghost { background-color: #735797 }
-.dragon { background-color: #6F35FC }
-.dark { background-color: #705746 }
-.steel { background-color: #B7B7CE }
-.fairy { background-color: #D685AD }
+.normal { background-color: var(--normal) !important }
+.fire { background-color: var(--fire) !important }
+.water { background-color:	var(--water) !important }
+.electric { background-color: var(--electric) !important }
+.grass { background-color: var(--grass) !important }
+.ice { background-color: var(--ice) !important }
+.fighting { background-color: var(--fighting) !important }
+.poison { background-color: var(--poison) !important }
+.ground { background-color: var(--ground) !important }
+.flying { background-color: var(--flying) !important }
+.psychic { background-color: var(--psychic) !important }
+.bug { background-color: var(--bug) !important }
+.rock { background-color: var(--rock) !important }
+.ghost { background-color: var(--ghost) !important }
+.dragon { background-color: var(--dragon) !important }
+.dark { background-color: var(--dark) !important }
+.steel { background-color: var(--steel) !important }
+.fairy { background-color: var(--fairy) !important }

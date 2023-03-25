@@ -37,20 +37,17 @@ const PokemonDetails = (props) => {
   }
 
   // Map through the types array to create a span element for each type
-  const types = pokemonData.type;
-  const pokemonType = types.map((type) => (
-    <span key={type} className={`pokemon-type ${type}`}>
-      {type}
+  const pokemonTypes = pokemonData.types.map((type) => (
+    <span key={type.type} className={`pokemon-type ${type.type}`}>
+      {type.type}
     </span>
   ));
-
-  // console.log(isShiny);
 
   return (
     <div className='rounded-container bg-dark-grey'>
       <Row className='align-items-center'>
         <Col xs={12} md={6} lg={6} className='text-center'>
-          <img src={pokemonSprite} className='pokemon-main-sprite' alt='' />
+          <img src={pokemonSprite} className='pokemon-main-sprite' alt={pokemonName + ' official artwork'} />
         </Col>
 
         <Col xs={12} md={6} lg={6} className='xs-text-center pb-25 pt-25'>
@@ -69,7 +66,7 @@ const PokemonDetails = (props) => {
           
           <hr/>
           <p className='mb-10 mt-20'><strong>Dex Number:</strong> {pokemonData.dexNumber}</p>
-          <p className='capitalize mb-10'><strong>Type:</strong> {pokemonType}</p>
+          <p className='capitalize mb-10'><strong>Type:</strong> {pokemonTypes}</p>
           <p className='capitalize mb-10'><strong>Species:</strong> {pokemonData.species}</p>
           <p className='mb-10'><strong>Height:</strong> {pokemonData.height} m</p>
           <p><strong>Weight:</strong> {pokemonData.weight} kg</p>
