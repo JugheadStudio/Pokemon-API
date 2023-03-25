@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 // Chart JS =====================
-import { Chart as ChartJS, ArcElement } from 'chart.js';
+import { Chart as ChartJS, ArcElement,} from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement);
@@ -32,7 +32,6 @@ const PieStats = (props) => {
     axios.get('https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 1008))
     .then((res) => {
 
-      let rerenderTrigger = pokemonData;
       let RandomPokemonStatsTotal1 = 0;
 
       for ( var i = 0; i < res.data.stats.length; i++ ) {
@@ -53,7 +52,6 @@ const PieStats = (props) => {
     axios.get('https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 1008))
     .then((res) => {
 
-      let rerenderTrigger = pokemonData;
       let RandomPokemonStatsTotal2 = 0;
 
       for ( var i = 0; i < res.data.stats.length; i++ ) {
@@ -74,7 +72,6 @@ const PieStats = (props) => {
     axios.get('https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 1008))
     .then((res) => {
 
-      let rerenderTrigger = pokemonData;
       let RandomPokemonStatsTotal3 = 0;
 
       for ( var i = 0; i < res.data.stats.length; i++ ) {
@@ -104,6 +101,7 @@ const PieStats = (props) => {
       },
     ],
   };
+  
 
   return (
 

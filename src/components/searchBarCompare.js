@@ -44,7 +44,7 @@ const SearchBarCompare = ({ func }) => {
         });
 
         if (filtered.length === 0) {
-          setFilteredPokemon([{ name: "No pokemon found", types: [], dexNumber: null }]);
+          setFilteredPokemon([{ name: "No Pokémon found", types: [], dexNumber: null }]);
         } else {
           const results = await Promise.all(filtered.slice(0, 5).map(async (pokemon) => {
             const response = await axios.get(pokemon.url);
@@ -76,18 +76,29 @@ const SearchBarCompare = ({ func }) => {
   );
 
   const searchResults =
-  filteredPokemon && filteredPokemon.length > 0 &&
+  filteredPokemon &&
+  filteredPokemon.length > 0 &&
   filteredPokemon.map(({ name, displayName, types, dexNumber }) => (
-    <Row key={name} onClick={() => updatePokemonChosenFromSearch(name)}>
-      {name !== "No pokemon with that name" ? (
+    <Row
+      key={name}
+      onClick={
+        name !== "No Pokémon found"
+          ? () => updatePokemonChosenFromSearch(name)
+          : undefined
+      }
+    >
+      {name !== "No Pokémon found" ? (
         <>
           <Col xs={2} lg={1} className="text-center">
             {dexNumber}
           </Col>
           <Col xs={2} lg={2}>
-          <img alt={`${name} sprite`}
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${dexNumber}.png`}
-          />
+            {dexNumber && (
+              <img
+                alt={`${name} sprite`}
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${dexNumber}.png`}
+              />
+            )}
           </Col>
           <Col xs={3} lg={5} className="text-center">
             {displayName}

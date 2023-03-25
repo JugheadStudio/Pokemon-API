@@ -169,12 +169,16 @@ tr, td, th {
 }
 
 td {
-  padding-top: 15px !important;
-  padding-bottom: 15px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
 }
 
 .weakness-item {
   width: 11%;
+}
+
+.dark-text {
+  color: var(--dark-grey);
 }
 
 /*================================== */

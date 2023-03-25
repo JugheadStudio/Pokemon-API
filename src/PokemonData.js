@@ -22,7 +22,6 @@ export const getPokemonData = async (pokemonName) => {
       moves: pokemon.moves.map(move => move.move),
       heldItems: pokemon.held_items.map(item => item.item),
       speciesURl: pokemon.species.url,
-    
       baseStats: {
         hp: pokemon.stats[0].base_stat,
         attack: pokemon.stats[1].base_stat,
@@ -57,9 +56,7 @@ export const getPokemonData = async (pokemonName) => {
     };
 
     const evolutionChainResponse = await axios.get(speciesResponse.data.evolution_chain.url);
-    data.evolutionData.evolutionChain = evolutionChainResponse.data.chain;
-    // console.log(data.evolutionData.evolutionChain);
-    // console.log(data.evolutionData);    
+    data.evolutionData.evolutionChain = evolutionChainResponse.data.chain;  
 
     const getFullNameAndSprite = async (id) => {
       const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -106,15 +103,14 @@ export const getPokemonData = async (pokemonName) => {
         const { fullName, sprite } = await getFullNameAndSprite(id);
         data.evolutionData.thirdEvolution.push({
           fullName: fullName,
-            name: thirdEvolvesTo.species.name,
-            id: id,
-            spriteUrl: sprite,
-            speciesURL: thirdEvolvesTo.species.url,
-          });
-        }
+          name: thirdEvolvesTo.species.name,
+          id: id,
+          spriteUrl: sprite,
+          speciesURL: thirdEvolvesTo.species.url,
+        });
       }
+    }
     
-
     const firstEvolution = data.evolutionData.firstEvolution.name;
     let evolvesTo = data.evolutionData.evolvesTo;
 
@@ -127,8 +123,6 @@ export const getPokemonData = async (pokemonName) => {
     for (let key in data.evolutionData.thirdEvolution) { 
       thirdEvolutionArray.push(data.evolutionData.thirdEvolution[key]);
     }
-    
-    // console.log(secondEvolutionArray);
 
     const currentPokemonName = data.evolutionData.currentPokemon.name;
     let evolvesFrom = data.evolutionData.evolvesFrom;
@@ -140,7 +134,11 @@ export const getPokemonData = async (pokemonName) => {
       let found = false;
       for (let i = 0; i < secondEvolutionArray.length; i++) {
         if (secondEvolutionArray[i].name.includes(currentPokemonName)) {
-          evolvesFrom = {name: firstEvolution, spriteUrl: data.evolutionData.firstEvolution.spriteUrl, fullName: data.evolutionData.firstEvolution.fullName};
+          evolvesFrom = {
+            name: firstEvolution, 
+            spriteUrl: data.evolutionData.firstEvolution.spriteUrl, 
+            fullName: data.evolutionData.firstEvolution.fullName
+          };
           found = true;
           break;
         }
@@ -148,7 +146,11 @@ export const getPokemonData = async (pokemonName) => {
       if (!found) {
         for (let i = 0; i < thirdEvolutionArray.length; i++) {
           if (thirdEvolutionArray[i].name.includes(currentPokemonName)) {
-            evolvesFrom = {name: secondEvolutionArray[i].name, spriteUrl: secondEvolutionArray[i].spriteUrl, fullName: data.evolutionData.secondEvolution[i].fullName};
+            evolvesFrom = {
+              name: secondEvolutionArray[i].name, 
+              spriteUrl: secondEvolutionArray[i].spriteUrl, 
+              fullName: data.evolutionData.secondEvolution[i].fullName
+            };
             found = true;
             break;
           }
@@ -159,7 +161,11 @@ export const getPokemonData = async (pokemonName) => {
     // get evolvesTo from current pokemon ========================
     if (currentPokemonName === firstEvolution) {
       if (data.evolutionData.secondEvolution && data.evolutionData.secondEvolution[0]) {
-        evolvesTo = {name: data.evolutionData.secondEvolution[0].name, spriteUrl: data.evolutionData.secondEvolution[0].spriteUrl, fullName: data.evolutionData.secondEvolution[0].fullName};
+        evolvesTo = {
+          name: data.evolutionData.secondEvolution[0].name, 
+          spriteUrl: data.evolutionData.secondEvolution[0].spriteUrl, 
+          fullName: data.evolutionData.secondEvolution[0].fullName
+        };
       } else {
         evolvesTo = {name: 'None', spriteUrl: 'None', fullName: 'None'};
       }
@@ -168,7 +174,10 @@ export const getPokemonData = async (pokemonName) => {
       for (let i = 0; i < secondEvolutionArray.length; i++) {
         if (secondEvolutionArray[i].name.includes(currentPokemonName)) {
           if (data.evolutionData.thirdEvolution && data.evolutionData.thirdEvolution[i]) {
-            evolvesTo = {name: data.evolutionData.thirdEvolution[i].name, spriteUrl: data.evolutionData.thirdEvolution[i].spriteUrl, fullName:  data.evolutionData.thirdEvolution[i].fullName};
+            evolvesTo = {
+              name: data.evolutionData.thirdEvolution[i].name, 
+              spriteUrl: data.evolutionData.thirdEvolution[i].spriteUrl, 
+              fullName:  data.evolutionData.thirdEvolution[i].fullName};
           } else {
             evolvesTo = {name: 'None', spriteUrl: 'None', fullName: 'None'};
           }

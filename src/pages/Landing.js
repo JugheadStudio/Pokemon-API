@@ -18,7 +18,6 @@ import WeaknessTable from '../components/weaknessTable';
 import SearchBar from '../components/searchBar';
 import LevelChart from '../components/levelChart';
 
-
 const Landing = () => {
 
   const pull_pokemon_name = (pokemonNameChosenFromSearch) => {
@@ -45,18 +44,14 @@ const Landing = () => {
       {/* API info ===================== */}
       <Row className=''>
         <Col xs={12} className='pt-12'>
-          {/* <div className='top-info-bar xs-text-center'>
-            <h1 className="mb-15 bold">About the API</h1>
-            <p className="mb-10">Below you will find data pulled from the PokeAPI that are being used to create informative charts that display various aspects of the Pokemon universe.</p>
-            <p>The PokeAPI provides a wealth of information about different Pokemon species, including their names, types, abilities, stats, and more. By leveraging this data, you will be able to see all the relevant data for any Pokemon at a glance and use it to your advantage.</p>
-          </div> */}
 
           <Accordion defaultActiveKey="0">
             <Accordion.Item eventKey="1" className='xs-text-center'>
-              <Accordion.Header>About Datamon</Accordion.Header>
+            <Accordion.Header>About Datamon</Accordion.Header>
               <Accordion.Body>
-                <p>Below you will find data pulled from the PokeAPI that are being used to create informative charts that display various aspects of the Pokemon universe.</p>
-                <p>The PokeAPI provides a wealth of information about different Pokemon species, including their names, types, abilities, stats, and more. By leveraging this data, you will be able to see all the relevant data for any Pokemon at a glance and use it to your advantage.</p>
+                <p className='mb-3'>Welcome to Datamon, a one-stop destination for all things Pokémon! Our website utilizes the power of the PokeAPI, a widely-used and comprehensive API that aggregates a wealth of Pokémon-related data, to provide you with detailed insights and captivating visualizations of the Pokémon universe.</p>
+                <p className='mb-3'>PokeAPI serves as a reliable source of information for numerous aspects of Pokémon species, including their names, types, abilities, stats, and much more. By harnessing the capabilities of this API, Datamon brings you an engaging experience, allowing you to access all the relevant data for any Pokémon at a glance and utilize this information to enrich your Pokémon journey.</p>
+                <p>Explore the fascinating world of Pokémon with Datamon, and discover comprehensive insights and statistics that will enhance your knowledge and appreciation of these beloved creatures.</p>
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>

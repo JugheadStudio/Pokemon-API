@@ -65,7 +65,7 @@ const WeaknessTable = (props) => {
   };
 
   return (
-    <div className='rounded-container bg-dark-grey mb-12-reset'>
+    <div className='rounded-container bg-dark-grey mb-25'>
       <h3 className='bold mb-15 text-center'>Weakness Table</h3>
       <p className='mb-15 text-center'>
         The numbers displayed are the damage taken multiplier for each type.
@@ -79,27 +79,27 @@ const WeaknessTable = (props) => {
           </tr>
 
           <tr>
-            <td className='weakness-item normal'>NOR</td>
-            <td className='weakness-item fighting'>FIG</td>
-            <td className='weakness-item flying'>FLY</td>
-            <td className='weakness-item poison'>POI</td>
-            <td className='weakness-item ground'>GRO</td>
-            <td className='weakness-item rock'>ROC</td>
-            <td className='weakness-item bug'>BUG</td>
-            <td className='weakness-item ghost'>GHO</td>
-            <td className='weakness-item steel'>STE</td>
+            <td className='weakness-item dark-text normal'>NOR</td>
+            <td className='weakness-item dark-text fighting'>FIG</td>
+            <td className='weakness-item dark-text flying'>FLY</td>
+            <td className='weakness-item dark-text poison'>POI</td>
+            <td className='weakness-item dark-text ground'>GRO</td>
+            <td className='weakness-item dark-text rock'>ROC</td>
+            <td className='weakness-item dark-text bug'>BUG</td>
+            <td className='weakness-item dark-text ghost'>GHO</td>
+            <td className='weakness-item dark-text steel'>STE</td>
           </tr>
 
           <tr>
-            <td className='weakness-item fire'>FIR</td>
-            <td className='weakness-item water'>WAT</td>
-            <td className='weakness-item grass'>GRA</td>
-            <td className='weakness-item electric'>ELE</td>
-            <td className='weakness-item psychic'>PSY</td>
-            <td className='weakness-item ice'>ICE</td>
-            <td className='weakness-item dragon'>DRA</td>
-            <td className='weakness-item dark'>DAR</td>
-            <td className='weakness-item fairy'>FAI</td>
+            <td className='weakness-item dark-text fire'>FIR</td>
+            <td className='weakness-item dark-text water'>WAT</td>
+            <td className='weakness-item dark-text grass'>GRA</td>
+            <td className='weakness-item dark-text electric'>ELE</td>
+            <td className='weakness-item dark-text psychic'>PSY</td>
+            <td className='weakness-item dark-text ice'>ICE</td>
+            <td className='weakness-item dark-text dragon'>DRA</td>
+            <td className='weakness-item dark-text dark'>DAR</td>
+            <td className='weakness-item dark-text fairy'>FAI</td>
           </tr>
 
           <tr>

@@ -5,8 +5,6 @@ export const getPokemonData2 = async (pokemonName2) => {
     const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName2}`);
     const pokemon = response.data;
 
-    // console.log(pokemon);
-
     const data2 = {
       name: pokemon.name,
       sprites: pokemon.sprites,
@@ -19,7 +17,6 @@ export const getPokemonData2 = async (pokemonName2) => {
       dexNumber: pokemon.id,
       height: pokemon.height / 10,
       weight: pokemon.weight / 10,
-
       baseStats: {
         hp: pokemon.stats[0].base_stat,
         attack: pokemon.stats[1].base_stat,
@@ -40,6 +37,7 @@ export const getPokemonData2 = async (pokemonName2) => {
     const genusResponse = await axios.get(pokemon.species.url);
     data2.species = genusResponse.data.genera[7] ? genusResponse.data.genera[7].genus : 'no species defined'; 
     return data2;
+    
   } catch (error) {
     console.error(error);
   }

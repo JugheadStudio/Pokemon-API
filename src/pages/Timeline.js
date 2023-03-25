@@ -38,9 +38,9 @@ const Timeline = () => {
       <Col xs={12} xl={12} className='pt-12'>
         <Accordion defaultActiveKey="0">
           <Accordion.Item eventKey="1" className='xs-text-center'>
-            <Accordion.Header>Timeline</Accordion.Header>
+            <Accordion.Header>About Pokémon Timeline</Accordion.Header>
               <Accordion.Body>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati vel porro deleniti, fuga ipsum illo? Hic voluptatem eius, voluptatum veniam minus officiis iusto quisquam vel possimus, itaque sed deserunt distinctio.</p>
+                <p>Discover the intricacies of your favorite Pokémon on this informative page. Delve into details such as their evolutionary chains, growth rates, and the experience points required for leveling up. This resource is designed for both seasoned Pokémon trainers and newcomers alike, offering valuable insights into Pokémon growth and development. Embark on an exploration of the captivating world of Pokémon and enhance your journey to becoming the ultimate Pokémon master.</p>
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
