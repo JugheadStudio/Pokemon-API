@@ -23,8 +23,18 @@ const PokemonDetails = (props) => {
     pokemonSprite = pokemonData.officialArtwork;
   }
 
-  const nameParts = pokemonData.name.split('-'); // Split the name by hyphen
-  const pokemonName = nameParts[0]; // Get the first part of the name
+  let pokemonName = pokemonData.name; // Don't convert the name to lowercase
+
+  // Check if the name should not be split
+  const excludeNames = ["chi-yu", "ting-lu", "chien-pao", "wo-chien", "iron-leaves", "iron-valiant", "roaring-moon", "iron-thorns", "iron-moth", "iron-jugulis", "iron-hands", "iron-bundle", "iron-treads", "sandy-shocks", "slither-wing", "flutter-mane", "brute-bonnet", "scream-tail", "great-tusk", "tapu-fini", "tapu-bulu", "tapu-lele", "tapu-koko", "kommo-o", "hakamo-o", "jangmo-o", "type-null", "porygon-z", "mime-jr", "ho-oh", "mr-mime"].map((name) => name.toLowerCase());
+  
+  if (excludeNames.includes(pokemonName.toLowerCase())) {
+    // Use the full name
+  } else {
+    const nameParts = pokemonName.toLowerCase().split('-'); // Convert the name to lowercase and split by hyphen
+    pokemonName = nameParts[0]; // Get the first part of the name
+  }
+  
 
   // Map through the types array to create a span element for each type
   const pokemonTypes = pokemonData.types.map((type) => (
@@ -33,13 +43,13 @@ const PokemonDetails = (props) => {
     </span>
   ));
 
-  // console.log(isShiny);
+  //! fix all pokemon names that have high fin
 
   return (
     <div className='rounded-container bg-dark-grey'>
       <Row className='align-items-center'>
         <Col xs={12} md={6} lg={6} className='text-center'>
-          <img src={pokemonSprite} className='pokemon-main-sprite' alt='' />
+          <img src={pokemonSprite} className='pokemon-main-sprite' alt={pokemonName + ' official artwork'} />
         </Col>
 
         <Col xs={12} md={6} lg={6} className='xs-text-center pb-25 pt-25'>
@@ -51,7 +61,9 @@ const PokemonDetails = (props) => {
             <div className='w-50 d-flex justify-content-end'>
               <div className="form-check form-switch">
                 <input className='form-check-input' type="checkbox" role="switch" id="shinySwitch" onChange={handleToggle}/>
-                <label className="form-check-label">Shiny</label>
+                <label className={`form-check-label ${isShiny ? 'shiny-text' : ''}`}>
+                  Shiny
+                </label>
               </div>
             </div>
           </div>

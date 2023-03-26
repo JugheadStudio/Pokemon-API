@@ -43,6 +43,8 @@ const Compare = () => {
   const [newPokemonNameFromSearch, setNewPokemonNameFromSearch] = useState(Math.floor(Math.random() * 1008))
   const [newPokemonNameFromSearch2, setNewPokemonNameFromSearch2] = useState(Math.floor(Math.random() * 1008))
 
+  //? add a button to randomize pokemon ====================
+
   useEffect(() => {
     getPokemonData(newPokemonNameFromSearch).then(data => setPokemonData(data));
     getPokemonData2(newPokemonNameFromSearch2).then(data2 => setPokemonData2(data2));

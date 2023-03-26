@@ -154,6 +154,10 @@ outline: 0;
   font-size: 0.75rem;
 }
 
+.shiny-text {
+  color: var(--primary);
+}
+
 /*================================== */
 
 /* Weakness Table ================== */

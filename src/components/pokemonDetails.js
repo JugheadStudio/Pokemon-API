@@ -23,18 +23,18 @@ const PokemonDetails = (props) => {
     pokemonSprite = pokemonData.officialArtwork;
   }
 
-  
-  let pokemonName = pokemonData.name.toLowerCase(); // Convert the name to lowercase
+  let pokemonName = pokemonData.name; // Don't convert the name to lowercase
 
   // Check if the name should not be split
-  const excludeNames = ["chi-yu", "ting-lu", "chien-pao", "wo-chien", "iron-leaves", "iron-valiant", "roaring-moon", "iron-thorns", "iron-moth", "iron-jugulis", "iron-hands", "iron-bundle", "iron-treads", "sandy-shocks", "slither-wing", "flutter-mane", "brute-bonnet", "scream-tail", "great-tusk", "tapu-fini", "tapu-bulu", "tapu-lele", "tapu-koko", "kommo-o", "hakamo-o", "jangmo-o", "type-null", "porygon-z", "mime-jr", "ho-oh", "mr-mime"];
-
-  if (excludeNames.includes(pokemonName)) {
-    // Do nothing
+  const excludeNames = ["chi-yu", "ting-lu", "chien-pao", "wo-chien", "iron-leaves", "iron-valiant", "roaring-moon", "iron-thorns", "iron-moth", "iron-jugulis", "iron-hands", "iron-bundle", "iron-treads", "sandy-shocks", "slither-wing", "flutter-mane", "brute-bonnet", "scream-tail", "great-tusk", "tapu-fini", "tapu-bulu", "tapu-lele", "tapu-koko", "kommo-o", "hakamo-o", "jangmo-o", "type-null", "porygon-z", "mime-jr", "ho-oh", "mr-mime"].map((name) => name.toLowerCase());
+  
+  if (excludeNames.includes(pokemonName.toLowerCase())) {
+    // Use the full name
   } else {
-    const nameParts = pokemonName.split('-'); // Split the name by hyphen
+    const nameParts = pokemonName.toLowerCase().split('-'); // Convert the name to lowercase and split by hyphen
     pokemonName = nameParts[0]; // Get the first part of the name
   }
+  
 
   // Map through the types array to create a span element for each type
   const pokemonTypes = pokemonData.types.map((type) => (
@@ -42,6 +42,8 @@ const PokemonDetails = (props) => {
       {type.type}
     </span>
   ));
+
+  //! fix all pokemon names that have high fin
 
   return (
     <div className='rounded-container bg-dark-grey'>
@@ -59,7 +61,9 @@ const PokemonDetails = (props) => {
             <div className='w-50 d-flex justify-content-end'>
               <div className="form-check form-switch">
                 <input className='form-check-input' type="checkbox" role="switch" id="shinySwitch" onChange={handleToggle}/>
-                <label className="form-check-label">Shiny</label>
+                <label className={`form-check-label ${isShiny ? 'shiny-text' : ''}`}>
+                  Shiny
+                </label>
               </div>
             </div>
           </div>
