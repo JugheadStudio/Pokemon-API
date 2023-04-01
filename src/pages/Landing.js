@@ -73,7 +73,14 @@ const Landing = () => {
           <PokemonDetails pokemonData={pokemonData}/>
         </Col>
 
-        <Col xs={12} xl={4} className='d-flex'>
+        <Col xs={12} md={6} xl={6} xxl={4} className='d-flex'>
+          <div className='rounded-container bg-mid-grey'>
+            <h3 className='bold mb-15 text-center'>EV Base Stats</h3>
+            <RadarStats pokemonData={pokemonData}/>
+          </div>
+        </Col>
+
+        {/* <Col xs={12} xl={4} className='d-flex'>
           <div className='rounded-container bg-dark-grey'>
             <h3 className='bold mb-15 text-center'>Evolution</h3>
             <p className='text-center mb-25'>Click on the evolution sprites to load Pokemon detials.</p>
@@ -127,17 +134,17 @@ const Landing = () => {
 
             </div>
           </div>
-        </Col>
+        </Col> */}
       </Row>
 
-      <Row>
+      {/* <Row>
         <Col xs={12} md={6} xl={6} xxl={4} className='d-flex'>
           <div className='rounded-container bg-mid-grey'>
             <h3 className='bold mb-15 text-center'>EV Base Stats</h3>
             <RadarStats pokemonData={pokemonData}/>
           </div>
         </Col>
-      </Row>
+      </Row> */}
 
       <Row>
         <Col xs={12} md={6} xl={6} className='d-flex'>
