@@ -19,9 +19,10 @@ import {
 
 const RadarStats = (props) => {
 
+  // get the pokemon data from props
   const pokemonData = props.pokemonData;
-  // console.log(pokemonData.baseStats);
 
+  // Push pokemon base stats data into chart
   const radialData = {
     labels: ['HP', 'Attack', 'Defence', 'Speed', 'Sp. Def', 'Sp. Atk'],
     datasets: [

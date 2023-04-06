@@ -21,28 +21,32 @@ ChartJS.register(
 
 const LevelChart = (props) => {
 
+  // Get the pokemon data from props
   const pokemonData = props.pokemonData
 
+  // Get the css color variables from the body which is declared in the Colors.css file
   const cssColorVar = getComputedStyle(document.body);
 
-  // PokeAPI variables =====================
+  // PokeAPI variables
   const [pokemonLevelStats, setPokemonLevelStats] = useState("")
   const [pokemonExperienceNeeded, setPokemonExperienceNeeded] = useState("")
 
-  // Get Pokemon data from API =====================
-
+  // Get Pokemon data from API using an axios call
   useEffect(() => {
     axios.get(pokemonData.growthRateUrl)
     .then((res) => {
 
+      // Declare the arrays where the data will be stored
       const pokemonLevel = [];
       const experiencePoints = [];
 
+      // Loop through the data from the axios call and push the level and experience data into the arrays
       for ( var i = 0; i < 100; i += 9 ) {
         pokemonLevel.push(res.data.levels[i].level.toString());
         experiencePoints.push(res.data.levels[i].experience);
       }
 
+      // Set the state of the arrays using the data from the declared arrays
       setPokemonLevelStats(pokemonLevel)
       setPokemonExperienceNeeded(experiencePoints)
 
@@ -52,6 +56,7 @@ const LevelChart = (props) => {
     })
   }, [pokemonData.growthRateUrl]);
 
+  // Set the data for the chart
   const levelData = {
     labels: pokemonLevelStats,
     datasets: [{
@@ -65,28 +70,29 @@ const LevelChart = (props) => {
 
   return (
 
+    // Render the chart with the data from the props
     <div className='line-chart-wrapper'>
-    <Line data={levelData} options={{
-      maintainAspectRatio: false,
-      scales: {
-        y: {
-          grid: {
-            color: cssColorVar.getPropertyValue('--mid-grey')
+      <Line data={levelData} options={{
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            grid: {
+              color: cssColorVar.getPropertyValue('--mid-grey')
+            },
+            ticks: {
+              color: '#d4d8e3',
+            },
           },
-          ticks: {
-            color: '#d4d8e3',
-          },
-        },
-        x: {
-          grid: {
-            color: cssColorVar.getPropertyValue('--mid-grey')
-          },
-          ticks: {
-            color: '#d4d8e3',
-          },
+          x: {
+            grid: {
+              color: cssColorVar.getPropertyValue('--mid-grey')
+            },
+            ticks: {
+              color: '#d4d8e3',
+            },
+          }
         }
-      }
-    }}/>
+      }}/>
     </div>
 
   )

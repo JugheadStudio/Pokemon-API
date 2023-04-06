@@ -12,7 +12,9 @@ ChartJS.register(
 
 const HorizontalBarStats = (props) => {
 
+  // Get the pokemon data from props
 	const pokemonData = props.pokemonData;
+
 
   const labels = [ 'HP', 'Attack', 'Defence', 'Speed', 'Sp. Def', 'Sp. Atk' ]
 	
@@ -50,6 +52,7 @@ const HorizontalBarStats = (props) => {
 
 	return (
 
+    // Render the chart with the data from the props
 		<Bar
       data={data}
       options={{

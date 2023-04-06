@@ -7,23 +7,28 @@ import Row from 'react-bootstrap/Row';
 
 const PokemonDetails = (props) => {
 
+  // Get the pokemon data from props
   const pokemonData = props.pokemonData;
 
+  // This variable will be used to toggle between the official artwork and the shiny version of the pokemon when the toggle switch is clicked
   const [isShiny, setIsShiny] = useState(false);
 
   const handleToggle = () => {
     setIsShiny(!isShiny);
   };
 
+  // Declare the variable where the sprite URL will be stored
   let pokemonSprite = '';
 
+  // Check if the shiny toggle switch is checked and set the sprite URL accordingly
   if (isShiny) {
     pokemonSprite = pokemonData.officialShiny;
   } else {
     pokemonSprite = pokemonData.officialArtwork;
   }
 
-  let pokemonName = pokemonData.name; // Don't convert the name to lowercase
+  // Get the pokemon name
+  let pokemonName = pokemonData.name;
 
   // Check if the name should not be split
   const excludeNames = ["chi-yu", "ting-lu", "chien-pao", "wo-chien", "iron-leaves", "iron-valiant", "roaring-moon", "iron-thorns", "iron-moth", "iron-jugulis", "iron-hands", "iron-bundle", "iron-treads", "sandy-shocks", "slither-wing", "flutter-mane", "brute-bonnet", "scream-tail", "great-tusk", "tapu-fini", "tapu-bulu", "tapu-lele", "tapu-koko", "kommo-o", "hakamo-o", "jangmo-o", "type-null", "porygon-z", "mime-jr", "ho-oh", "mr-mime"].map((name) => name.toLowerCase());
@@ -36,14 +41,12 @@ const PokemonDetails = (props) => {
   }
   
 
-  // Map through the types array to create a span element for each type
+  // Map through the types array to create a span element for each type and add a color class to it using the type name
   const pokemonTypes = pokemonData.types.map((type) => (
     <span key={type.type} className={`pokemon-type ${type.type}`}>
       {type.type}
     </span>
   ));
-
-  //! fix all pokemon names that have high fin
 
   return (
     <div className='rounded-container bg-dark-grey'>

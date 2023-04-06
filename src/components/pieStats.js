@@ -1,6 +1,7 @@
 import React from 'react';
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
 // Bootstrap
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -13,31 +14,36 @@ ChartJS.register(ArcElement);
 
 const PieStats = (props) => {
 
+  // Get the pokemon data from props
   const pokemonData = props.pokemonData;
 
+  // Get the css color variables from the body which is declared in the Colors.css file
   const cssColorVar = getComputedStyle(document.body);
 
-  // Random pokemon
-  const [randomPokemonStats1, setrandomPokemonStats1] = useState("");
-  const [randomPokemonName1, setrandomPokemonName1] = useState("");
+  // Random pokemon variables
+  const [randomPokemonStats1, setrandomPokemonStats1] = useState('');
+  const [randomPokemonName1, setrandomPokemonName1] = useState('');
 
-  const [randomPokemonStats2, setrandomPokemonStats2] = useState("");
-  const [randomPokemonName2, setrandomPokemonName2] = useState("");
+  const [randomPokemonStats2, setrandomPokemonStats2] = useState('');
+  const [randomPokemonName2, setrandomPokemonName2] = useState('');
 
-  const [randomPokemonStats3, setrandomPokemonStats3] = useState("");
-  const [randomPokemonName3, setrandomPokemonName3] = useState("");
+  const [randomPokemonStats3, setrandomPokemonStats3] = useState('');
+  const [randomPokemonName3, setrandomPokemonName3] = useState('');
 
-  // Random generated Pokemon 1
+  // Random generated Pokemon 1 using the math.random function to generate a random number between 1 and 1008
   useEffect(() => {
     axios.get('https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 1008))
     .then((res) => {
 
+      // Declare the variable where the data will be stored
       let RandomPokemonStatsTotal1 = 0;
 
+      // Loop through the data from the axios call and add the base stats together
       for ( var i = 0; i < res.data.stats.length; i++ ) {
         RandomPokemonStatsTotal1 += res.data.stats[i].base_stat;
       }
 
+      // Set the state of the variable using the data from the declared variable
       setrandomPokemonName1(res.data.name)
       setrandomPokemonStats1(RandomPokemonStatsTotal1)
 
@@ -47,17 +53,20 @@ const PieStats = (props) => {
     })
   }, [pokemonData])
 
-  // Random generated Pokemon 2
+  // Random generated Pokemon 2 using the math.random function to generate a random number between 1 and 1008
   useEffect(() => {
     axios.get('https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 1008))
     .then((res) => {
 
+      // Declare the variable where the data will be stored
       let RandomPokemonStatsTotal2 = 0;
 
+      // Loop through the data from the axios call and add the base stats together
       for ( var i = 0; i < res.data.stats.length; i++ ) {
         RandomPokemonStatsTotal2 += res.data.stats[i].base_stat;
       }
 
+      // Set the state of the variable using the data from the declared variable
       setrandomPokemonName2(res.data.name)
       setrandomPokemonStats2(RandomPokemonStatsTotal2)
 
@@ -67,17 +76,20 @@ const PieStats = (props) => {
     })
   }, [pokemonData])
 
-  // Random generated Pokemon 2
+  // Random generated Pokemon 3 using the math.random function to generate a random number between 1 and 1008
   useEffect(() => {
     axios.get('https://pokeapi.co/api/v2/pokemon/' + Math.floor(Math.random() * 1008))
     .then((res) => {
 
+      // Declare the variable where the data will be stored
       let RandomPokemonStatsTotal3 = 0;
 
+      // Loop through the data from the axios call and add the base stats together
       for ( var i = 0; i < res.data.stats.length; i++ ) {
         RandomPokemonStatsTotal3 += res.data.stats[i].base_stat;
       }
 
+      // Set the state of the variable using the data from the declared variable
       setrandomPokemonName3(res.data.name)
       setrandomPokemonStats3(RandomPokemonStatsTotal3)
 
@@ -87,6 +99,7 @@ const PieStats = (props) => {
     })
   }, [pokemonData])
 
+  // Chart data for the pie chart using the pokemon data from the props and the color variables from the css
   const pieData = {
     datasets: [
       {
@@ -105,9 +118,10 @@ const PieStats = (props) => {
 
   return (
 
+    // The code that will be pushed to the DOM using the data from the props and the state
     <div className='rounded-container bg-dark-grey'>
-      <h3 className='bold mb-15 text-center'>Stats Comparison</h3>
-      <p id='pieChartName' className='text-center mb-25'>Below you will find the base stats of <span className='capitalize'>{pokemonData.name}</span> compared to <span className='capitalize'>{randomPokemonName1}</span>, <span className='capitalize'>{randomPokemonName2}</span> and <span className='capitalize'>{randomPokemonName3}</span> which were randomly selected.</p>
+      <h3 className='bold mb-15 text-center'>Pokémon 1 Stats Comparison</h3>
+      <p id='pieChartName' className='text-center mb-25'>Below you will find the total base stats of <span className='capitalize'>{pokemonData.name}</span> compared to <span className='capitalize'>{randomPokemonName1}</span>, <span className='capitalize'>{randomPokemonName2}</span> and <span className='capitalize'>{randomPokemonName3}</span> which were randomly selected.</p>
       <Row className="align-items-center">
         <Col xs={12} md={8} lg={8} className="mb-25">
           <div className='w-100'>

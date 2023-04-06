@@ -17,13 +17,15 @@ import SearchBar from '../components/searchBar';
 
 const Timeline = () => {
 
+  // This function is passed to the search bar component to get the name of the pokemon chosen from the search bar
   const pull_pokemon_name = (pokemonNameChosenFromSearch) => {
     setNewPokemonNameFromSearch(pokemonNameChosenFromSearch)
   }
 
   const [pokemonData, setPokemonData] = useState(null);
-  const [newPokemonNameFromSearch, setNewPokemonNameFromSearch] = useState(Math.floor(Math.random() * 1008))
+  const [newPokemonNameFromSearch, setNewPokemonNameFromSearch] = useState(Math.floor(Math.random() * 905))
 
+  // Fetch the pokemon data when the page loads
   useEffect(() => {
     getPokemonData(newPokemonNameFromSearch).then(data => setPokemonData(data));
   }, [newPokemonNameFromSearch]);
@@ -50,6 +52,7 @@ const Timeline = () => {
       <Row>
         <Col xs={12} xl={12}>
           <div className="input-box">
+            {/* Get the name of the pokemon chosen from the search bar */}
           <SearchBar func={pull_pokemon_name}/>               
           </div>
         </Col>
@@ -62,8 +65,8 @@ const Timeline = () => {
 
         <Col xs={12} xl={4} className='d-flex'>
           <div className='rounded-container bg-mid-grey'>
-            <h3 className='bold mb-15 text-center'>Evolution</h3>
-            <p className='text-center mb-25'>Click on the evolution sprites to load Pokemon detials.</p>
+            <h3 className='bold mb-15 text-center'>Evolution Chain</h3>
+            <p className='text-center mb-25'>Click on the evolution sprites to load Pokémon detials.</p>
             <div className='evolutionContainer'>
 
               <Row>
@@ -73,6 +76,7 @@ const Timeline = () => {
 
               <Row>
                 <Col xs={6}>
+                  {/* If the pokemon has an evolution, display the evolution sprite */}
                 {pokemonData.evolutionData.evolvesFrom.spriteUrl !== 'None' && 
                   <img className='pointer' 
                   src={pokemonData.evolutionData.evolvesFrom.spriteUrl} 
@@ -81,6 +85,7 @@ const Timeline = () => {
                 }
                 </Col>
                 <Col xs={6}>
+                  {/* If the pokemon has an evolution, display the evolution sprite */}
                   {pokemonData.evolutionData.evolvesTo.spriteUrl !== 'None' && 
                     <img className='pointer' 
                     src={pokemonData.evolutionData.evolvesTo.spriteUrl} 
@@ -92,6 +97,7 @@ const Timeline = () => {
 
               <Row>
                 <Col xs={6}>
+                  {/* If the pokemon has an evolution, display the evolution name else display none */}
                   {pokemonData.evolutionData.evolvesFrom.name !== 'None' ? 
                     <p className='pointer' onClick={() => setNewPokemonNameFromSearch(pokemonData.evolutionData.evolvesFrom.fullName)}>
                       {pokemonData.evolutionData.evolvesFrom.name.charAt(0).toUpperCase() + pokemonData.evolutionData.evolvesFrom.name.slice(1)}
@@ -102,6 +108,7 @@ const Timeline = () => {
                 </Col>
 
                 <Col className='pointer' xs={6}>
+                  {/* If the pokemon has an evolution, display the evolution name else display none */}
                   {pokemonData.evolutionData.evolvesTo.name !== 'None' ? 
                     <p onClick={() => setNewPokemonNameFromSearch(pokemonData.evolutionData.evolvesTo.fullName)}>
                       {pokemonData.evolutionData.evolvesTo.name.charAt(0).toUpperCase() + pokemonData.evolutionData.evolvesTo.name.slice(1)}
@@ -121,7 +128,7 @@ const Timeline = () => {
         <Col xs={12} xl={12} className='d-flex'>
           <div className='rounded-container bg-dark-grey'>
             <h3 className='bold mb-15 text-center'>Growth Rate</h3>
-            <p className='mb-15 text-center'>Below you will find a line chart that shows how much experience this pokemon needs to level up.</p>
+            <p className='mb-15 text-center'>Below you will find a line chart that shows how much experience this Pokémon needs to level up.</p>
             <LevelChart pokemonData={pokemonData}/>
           </div>
         </Col>
@@ -133,7 +140,7 @@ const Timeline = () => {
             <p>
               Using <a href="https://pokeapi.co/">PokeAPI V2</a> | Designed by <span>Jughead Studio</span>
               <br />
-              All content is property of &copy;Pokemon 1995-2023 Nintendo/Game Freak 
+              All content is property of &copy;Pokémon 1995-2023 Nintendo/Game Freak 
             </p>
 
           </div>

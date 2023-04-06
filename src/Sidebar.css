@@ -32,6 +32,14 @@
 
 #sidebar a.active {
     background-color: var(--primary);
+    color: var(--dark-grey);
+    font-weight: 400;
+}
+
+#sidebar a.active:Hover {
+  background-color: var(--primary);
+  color: var(--dark-grey);
+  font-weight: 400;
 }
 
 #sidebar a:hover {

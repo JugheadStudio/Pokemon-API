@@ -40,8 +40,8 @@ const Compare = () => {
 
   const [pokemonData, setPokemonData] = useState(null);
   const [pokemonData2, setPokemonData2] = useState(null);
-  const [newPokemonNameFromSearch, setNewPokemonNameFromSearch] = useState(Math.floor(Math.random() * 1008))
-  const [newPokemonNameFromSearch2, setNewPokemonNameFromSearch2] = useState(Math.floor(Math.random() * 1008))
+  const [newPokemonNameFromSearch, setNewPokemonNameFromSearch] = useState(Math.floor(Math.random() * 905))
+  const [newPokemonNameFromSearch2, setNewPokemonNameFromSearch2] = useState(Math.floor(Math.random() * 905))
 
   //? add a button to randomize pokemon ====================
 
@@ -70,8 +70,8 @@ const Compare = () => {
             <Accordion.Item eventKey="1" className='xs-text-center'>
               <Accordion.Header>About Pokémon Comparison</Accordion.Header>
               <Accordion.Body>
-                <p>Comparing Pokemon stats and abilities can be a valuable tool for trainers looking to build powerful teams. By using data and charts, we can gain a deeper understanding of the unique strengths and weaknesses of each Pokemon.</p>
-                <p>One way to compare Pokemon stats is by using a radar chart, which displays a Pokemon's base stats in categories such as Attack, Defense, Speed, Special Attack, Special Defense, and HP. This chart allows us to quickly see how a Pokemon stacks up against others in different categories and can help trainers decide which Pokemon to add to their team based on their desired attributes.</p>
+                <p>Comparing Pokémon stats and abilities can be a valuable tool for trainers looking to build powerful teams. By using data and charts, we can gain a deeper understanding of the unique strengths and weaknesses of each Pokémon.</p>
+                <p>One way to compare Pokémon stats is by using a radar chart, which displays a Pokémon's base stats in categories such as Attack, Defense, Speed, Special Attack, Special Defense, and HP. This chart allows us to quickly see how a Pokémon stacks up against others in different categories and can help trainers decide which Pokémon to add to their team based on their desired attributes.</p>
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
@@ -80,13 +80,13 @@ const Compare = () => {
 
       <Row>
         <Col xs={12} xl={6}>
-          <h2 className="mb-15 bold text-center">Pokemon 1</h2>
+          <h2 className="mb-15 bold text-center">Pokémon 1</h2>
           <SearchBar func={pull_pokemon_name}/>      
           <PokemonDetails pokemonData={pokemonData}/>
         </Col>
 
         <Col xs={12} xl={6}>
-          <h2 className="mb-15 bold text-center">Pokemon 2</h2>          
+          <h2 className="mb-15 bold text-center">Pokémon 2</h2>          
           <SearchBarCompare func={pull_pokemon_name_2}/>     
           <PokemonDetails2 pokemonData={pokemonData2}/>
         </Col>
@@ -95,7 +95,7 @@ const Compare = () => {
       <Row>
         <Col xs={12} xl={6} className=' text-center'>
           <div className='rounded-container bg-mid-grey'>
-            <h3 className='bold mb-15'>Pokemon 1 Stats Overview</h3>
+            <h3 className='bold mb-15'>Pokémon 1 EV Stats</h3>
             <div className='w-100 text-center '>
               <div className='radar-size m-auto'>
                 <RadarStats pokemonData={pokemonData}/>
@@ -106,7 +106,7 @@ const Compare = () => {
 
         <Col xs={12} xl={6} className=' text-center'>
           <div className='rounded-container bg-mid-grey'>
-            <h3 className='bold mb-15'>Pokemon 2 Stats Overview</h3>
+            <h3 className='bold mb-15'>Pokémon 2 EV Stats</h3>
             <div className='w-100 text-center '>
               <div className='radar-size m-auto'>
                 <RadarStatsCompare pokemonData={pokemonData2}/>
@@ -119,7 +119,7 @@ const Compare = () => {
       <Row>
         <Col xs={12} xl={6} className='text-center'>
           <div className='rounded-container bg-dark-grey'>
-            <h3 className='bold mb-15'>Pokemon 1 Base Stats</h3>
+            <h3 className='bold mb-15'>Pokémon 1 Base Stats</h3>
             <div className='w-100 text-center '>
               <div className='w-75 m-auto chart-wrapper '>
                 <HorizontalBarStats pokemonData={pokemonData}/>
@@ -130,7 +130,7 @@ const Compare = () => {
 
         <Col xs={12} xl={6} className='text-center'>
           <div className='rounded-container bg-dark-grey'>
-            <h3 className='bold mb-15'>Pokemon 2 Base Stats</h3>
+            <h3 className='bold mb-15'>Pokémon 2 Base Stats</h3>
             <div className='w-100 text-center '>
               <div className='w-75 m-auto chart-wrapper '>
                 <HorizontalBarStatsCompare pokemonData={pokemonData2}/>
@@ -156,7 +156,7 @@ const Compare = () => {
             <p>
               Using <a href="https://pokeapi.co/">PokeAPI V2</a> | Designed by <span>Jughead Studio</span>
               <br />
-              All content is property of &copy;Pokemon 1995-2023 Nintendo/Game Freak 
+              All content is property of &copy;Pokémon 1995-2023 Nintendo/Game Freak 
             </p>
 
           </div>

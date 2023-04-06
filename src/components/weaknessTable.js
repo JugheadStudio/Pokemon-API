@@ -4,10 +4,13 @@ import Table from 'react-bootstrap/Table';
 
 const WeaknessTable = (props) => {
   
+  // Get the pokemon data from the props
   const pokemonData = props.pokemonData;
 
+  // Declare state variables for the weakness table
   const [damageMultiplier, setDamageMultiplier] = useState([]);
 
+  // Fetch the damage relations for each type
   useEffect(() => {
     const fetchData = async () => {
       const urls = pokemonData.types.map((type) => type.typeUrl);
@@ -18,6 +21,7 @@ const WeaknessTable = (props) => {
     fetchData();
   }, [pokemonData]);
 
+  // Set the damage multiplier for each type
   const calculateDamageMultiplier = (damageRelations) => {
     const damageMultipliers = [
       { name: "normal", multiplier: 1 },
@@ -40,6 +44,10 @@ const WeaknessTable = (props) => {
       { name: "fairy", multiplier: 1 },
     ];
   
+    // Calculate the damage multiplier for each type
+    // This for loop loops through each type and checks if the type is double, half, or no damage from the current type
+    // By checking if the type shows up in the double_damage_from, half_damage_from, or no_damage_from arrays
+    // And compares it to the damageMultipliers array
     for (let i = 0; i < damageRelations.length; i++) {
       const typeDamageRelations = damageRelations[i];
       typeDamageRelations.double_damage_from.forEach((type) => {

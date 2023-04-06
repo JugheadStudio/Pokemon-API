@@ -4,17 +4,21 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
 const SearchBar = ({ func }) => {
+
+  // Declare state variables for the search bar
   const [allPokemon, setAllPokemon] = useState([]);
   const [filteredPokemon, setFilteredPokemon] = useState(null);
   const [userSearchInput, setUserSearchInput] = useState('');
 
+  // Fetch all the pokemon names from the API
   useEffect(() => {
     const fetchPokemonNames = async () => {
       try {
         const response = await axios.get(
-          'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1008'
+          'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=905'
         );
 
+        // Get the ID and name of each pokemon
         const dexEntry = response.data.results.map((result) => {
           const dexLink = result.url;
           const parts = dexLink.split('/');
@@ -32,10 +36,16 @@ const SearchBar = ({ func }) => {
 
   useEffect(() => {
     const filterResults = async (input) => {
+
+      // If the user hasn't typed anything, don't filter the results
       if (input === '') {
         setFilteredPokemon(null);
       } else {
+
+        // Convert the user's input to lowercase
         const searchInput = input.toLowerCase();
+
+        // Filter the pokemon names based on the user's input
         const filtered = allPokemon.filter((pokemon) => {
           return (
             pokemon.name.includes(searchInput) || // check if the name includes the search input
@@ -43,9 +53,12 @@ const SearchBar = ({ func }) => {
           );
         });
 
+        // If no pokemon are found, display a message that says no pokemon found
         if (filtered.length === 0) {
           setFilteredPokemon([{ name: "No Pokémon found", types: [], dexNumber: null }]);
         } else {
+
+          // Get the pokemon name, types, and dex number and store them in an array
           const results = await Promise.all(filtered.slice(0, 5).map(async (pokemon) => {
             const response = await axios.get(pokemon.url);
             const types = response.data.types.map((pokemonType) => pokemonType.type.name);
@@ -62,10 +75,12 @@ const SearchBar = ({ func }) => {
     filterResults(userSearchInput);
   }, [allPokemon, userSearchInput]);
 
+  // Handle the user's input
   const handleUserInput = useCallback((event) => {
     setUserSearchInput(event.target.value);
   }, []);
 
+  // Update the pokemon chosen from the search results, clear the search results, clear the user's input and push the new pokemon to the parent using props
   const updatePokemonChosenFromSearch = useCallback(
     (name) => {
       func(name);
@@ -75,10 +90,12 @@ const SearchBar = ({ func }) => {
     [func]
   );
 
+  // Map the filtered pokemon to a list of results
   const searchResults =
   filteredPokemon &&
   filteredPokemon.length > 0 &&
   filteredPokemon.map(({ name, displayName, types, dexNumber }) => (
+    // If the user clicks on a pokemon, update the pokemon chosen from the search results
     <Row
       key={name}
       onClick={
@@ -87,6 +104,7 @@ const SearchBar = ({ func }) => {
           : undefined
       }
     >
+      {/* If the pokemon is not found, display a message that says no pokemon found */}
       {name !== "No Pokémon found" ? (
         <>
           <Col xs={2} lg={1} className="text-center">
@@ -111,7 +129,7 @@ const SearchBar = ({ func }) => {
             ))}
           </Col>
         </>
-      ) : (
+      ) : ( // If the pokemon is not found, display a message that says no pokemon found
         <Col xs={12} lg={12} className="text-center">
           {name}
         </Col>
